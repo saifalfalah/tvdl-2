@@ -1,8 +1,9 @@
 @app
-begin-app
+tvdl-app
 
 @http
 get /
+post /
 
 @tables
 data
