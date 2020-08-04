@@ -1,22 +1,8 @@
-<img src="https://static.begin.app/node-hello-world/readme-banner.png" width="813">
+TODO:
 
-[![Begin build status](https://buildstatus.begin.app/climb-wdo/status.svg)](https://begin.com)
-
-## Deploy your own
-
-[![Deploy to Begin](https://static.begin.com/deploy-to-begin.svg)](https://begin.com/apps/create?template=https://github.com/begin-examples/node-hello-world)
-
-Deploy your own clone of this app to Begin!
-
-## Getting started
-
-- Start the local dev server: `npm start`
-- Lint your code: `npm run lint`
-- Run your tests: `npm t`
-
-## Reference
-
-- [Quickstart](https://docs.begin.com/en/guides/quickstart/) - basics on working locally, project structure, deploying, and accessing your Begin app
-- [Creating new routes](https://docs.begin.com/en/functions/creating-new-functions) - basics on expanding the capabilities of your app
-
-Head to [docs.begin.com](https://docs.begin.com/) to learn more!
+1. Check if it is a URL; else throw Error
+2. Check if it is a Twitter URL; else throw Error
+3. Retrieve data from Twitter;
+4. If it contains video, extract all 3 sizes URL; else throw Error
+5. Read Begin Data. If it is a 10th request, set upsell to true
+6. Send it to the client
