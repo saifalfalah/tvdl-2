@@ -1,10 +1,15 @@
 let arc = require("@architect/functions");
 let parseBody = arc.http.helpers.bodyParser;
+let isURL = require("is-url");
 
 // learn more about HTTP functions here: https://arc.codes/primitives/http
 
-let bodyURLCheck = (body) => {
+let checkBodyUrl = (body) => {
   if (!body.url) throw new Error("601: No url");
+};
+
+let checkIsUrl = (body) => {
+  if (!isURL(body.url)) throw new Error("602: Not a url");
 };
 
 exports.handler = async function http(req) {
@@ -14,9 +19,9 @@ exports.handler = async function http(req) {
 
   try {
     // 1. Check if the body contains the field url
-    bodyURLCheck(body);
+    checkBodyUrl(body);
     // 2. Check if the field url in the body is a url
-
+    checkIsUrl(body);
     return {
       headers: {
         "cache-control":

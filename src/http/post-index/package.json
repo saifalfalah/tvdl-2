@@ -17,6 +17,7 @@
   "author": "Saif Al Falah",
   "license": "ISC",
   "dependencies": {
-    "@architect/functions": "^3.12.3"
+    "@architect/functions": "^3.12.3",
+    "is-url": "^1.2.4"
   }
 }
