@@ -1,0 +1,22 @@
+{
+  "name": "tvdl-api",
+  "version": "2.0.0",
+  "description": "Twitter Video Downloader for Siri Shortcuts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Twitter",
+    "Video",
+    "Siri",
+    "Apple",
+    "iPhone",
+    "Downloader"
+  ],
+  "author": "Saif Al Falah",
+  "license": "ISC",
+  "dependencies": {
+    "@architect/functions": "^3.12.3"
+  }
+}

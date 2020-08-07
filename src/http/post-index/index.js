@@ -1,5 +1,10 @@
+let arc = require("@architect/functions");
+let parseBody = arc.http.helpers.bodyParser;
+
 // learn more about HTTP functions here: https://arc.codes/primitives/http
 exports.handler = async function http(req) {
+  console.log(req);
+  console.log(parseBody(req));
   return {
     headers: {
       "cache-control":
