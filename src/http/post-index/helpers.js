@@ -22,4 +22,4 @@ exports.checkIfTwitterUrl = (url) => {
 exports.getTweetPath = (url) => parse(url).pathname.split("/")[3];
 
 exports.getApiRequestUrl = (tweetPath) =>
-  `https://api.twitter.com/1.1/statuses/show.json?id=${tweetPath}&tweet_mode=extended`;
+  `https://api.twitter.com/1.1/statuses/show.json?id=${tweetPath}`;

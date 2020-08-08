@@ -1,5 +1,6 @@
 let arc = require("@architect/functions");
 let parseBody = arc.http.helpers.bodyParser;
+let axios = require("axios");
 const {
   checkBodyUrl,
   checkIsUrl,
@@ -31,6 +32,20 @@ exports.handler = async function http(req) {
 
     // 5. Prepare api request url
     const requestUrl = getApiRequestUrl(tweetPath);
+    console.log(requestUrl);
+
+    // console.log(process.env.TOKEN);
+    let data;
+
+    data = await axios({
+      method: "get",
+      url: requestUrl,
+      headers: {
+        authorization: `Bearer ${process.env.TOKEN}`,
+      },
+    });
+
+    console.log(data);
 
     // return something only if there are no errors.
     return {
@@ -42,7 +57,7 @@ exports.handler = async function http(req) {
       body: `<div>Hello World</div>`,
     };
   } catch (e) {
-    // console.log(e.message);
+    console.log(e.message);
     return {
       headers: {
         "cache-control":
