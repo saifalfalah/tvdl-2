@@ -48,5 +48,6 @@ exports.shouldAskForSupport = () => {
 };
 
 exports.appendAskForSupport = () => {
+  // add url of the website where to redirect users
   return;
 };
