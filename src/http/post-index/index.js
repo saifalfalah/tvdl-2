@@ -7,6 +7,7 @@ const {
   checkIfTwitterUrl,
   getTweetPath,
   getApiRequestUrl,
+  checkIfContainsVideoOrGif,
 } = require("./helpers");
 
 exports.handler = async function http(req) {
@@ -45,7 +46,11 @@ exports.handler = async function http(req) {
       },
     });
 
-    console.log(data);
+    data = data.data;
+
+    // console.log(data);
+
+    checkIfContainsVideoOrGif(data);
 
     // return something only if there are no errors.
     return {

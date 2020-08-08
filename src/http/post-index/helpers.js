@@ -23,3 +23,19 @@ exports.getTweetPath = (url) => parse(url).pathname.split("/")[3];
 
 exports.getApiRequestUrl = (tweetPath) =>
   `https://api.twitter.com/1.1/statuses/show.json?id=${tweetPath}`;
+
+exports.checkIfContainsVideoOrGif = (data) => {
+  if (
+    !data.hasOwnProperty("extended_entities") ||
+    !data.extended_entities.media[0].video_info
+  )
+    throw new Error("605: Video / GIF not found");
+};
+
+exports.getBitrate = (data) => {
+  let variants = data.extended_entities.media[0].video_info.variants;
+  variants = variants.filter((el) => el.content_type === "video/mp4");
+  variants = variants.map((el) => el.bitrate);
+  variants.sort((a, b) => a - b);
+  return variants;
+};
