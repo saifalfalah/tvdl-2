@@ -8,6 +8,7 @@ const {
   getTweetPath,
   getApiRequestUrl,
   checkIfContainsVideoOrGif,
+  shouldAskForSupport,
 } = require("./helpers");
 
 exports.handler = async function http(req) {
@@ -33,7 +34,7 @@ exports.handler = async function http(req) {
 
     // 5. Prepare api request url
     const requestUrl = getApiRequestUrl(tweetPath);
-    console.log(requestUrl);
+    // console.log(requestUrl);
 
     // console.log(process.env.TOKEN);
     let data;
@@ -49,8 +50,9 @@ exports.handler = async function http(req) {
     data = data.data;
 
     // console.log(data);
-
     checkIfContainsVideoOrGif(data);
+
+    if (shouldAskForSupport() === true) appendAskForSupport();
 
     // return something only if there are no errors.
     return {

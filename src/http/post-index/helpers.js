@@ -39,3 +39,14 @@ exports.getBitrate = (data) => {
   variants.sort((a, b) => a - b);
   return variants;
 };
+
+exports.shouldAskForSupport = () => {
+  // Generate a random number
+  // If the number is divisble by 7, then try selling
+  if (Math.ceil(Math.random() * 10) % 7 === 0) return true;
+  else return false;
+};
+
+exports.appendAskForSupport = () => {
+  return;
+};
