@@ -8,11 +8,15 @@ const {
   getTweetPath,
   getApiRequestUrl,
   checkIfContainsVideoOrGif,
+  getBitrate,
   shouldAskForSupport,
+  makeDownloadObject,
+  sanitize,
 } = require("./helpers");
 
 exports.handler = async function http(req) {
   let body = parseBody(req);
+  // console.log(body);
 
   try {
     if (!body) throw new Error("600: Empty Request. Update your shortcut.");
@@ -31,6 +35,7 @@ exports.handler = async function http(req) {
     // Getting the Tweet Path
     const tweetPath = getTweetPath(url);
     if (!tweetPath) throw new Error("604: Not a tweet");
+    // console.log(tweetPath);
 
     // 5. Prepare api request url
     const requestUrl = getApiRequestUrl(tweetPath);
@@ -38,7 +43,7 @@ exports.handler = async function http(req) {
 
     // console.log(process.env.TOKEN);
     let data;
-
+    // console.log("Sending request to Twitter API");
     data = await axios({
       method: "get",
       url: requestUrl,
@@ -51,6 +56,14 @@ exports.handler = async function http(req) {
 
     // console.log(data);
     checkIfContainsVideoOrGif(data);
+
+    let bitrates = getBitrate(data);
+
+    let downloadObject = makeDownloadObject(data, bitrates);
+
+    downloadObject = sanitize(downloadObject);
+
+    console.log(downloadObject);
 
     if (shouldAskForSupport() === true) appendAskForSupport();
 
