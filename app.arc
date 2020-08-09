@@ -4,6 +4,7 @@ tvdl-app
 @http
 get /
 post /
+get /ver
 
 @tables
 data
