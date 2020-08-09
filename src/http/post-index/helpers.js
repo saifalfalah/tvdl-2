@@ -41,8 +41,13 @@ exports.getBitrate = (data) => {
 };
 
 exports.shouldAskForSupport = () => {
-  // Generate a random number
-  // If the number is divisble by 7, then try selling
+  // If the number is divisible by 7, then try selling.
+  // Using 7 since 7 is prime and the unbiased probability of
+  // generating a multiple of 7 between 2 and 10 should be 1/10
+  // So for now, we are just selling to 1 in 10 requests
+
+  // To double the probability, use 5 (5 & 10). Or to triple, use 3 (3, 6, 9).
+
   if (Math.ceil(Math.random() * 10) % 7 === 0) return true;
   else return false;
 };
