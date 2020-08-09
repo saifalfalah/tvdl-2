@@ -13,6 +13,7 @@ const {
   makeDownloadObject,
   sanitize,
   appendAskForSupport,
+  appendLatestVersionInformation,
 } = require("./helpers");
 
 exports.handler = async function http(req) {
@@ -66,6 +67,8 @@ exports.handler = async function http(req) {
 
     if (shouldAskForSupport() === true)
       downloadObject = appendAskForSupport(downloadObject);
+
+    downloadObject = appendLatestVersionInformation(downloadObject);
 
     console.log(downloadObject);
 

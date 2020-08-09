@@ -154,3 +154,10 @@ const calculateSizeBitrate = (bitrate, duration) => {
   size = size.toString() + " MB";
   return size;
 };
+
+exports.appendLatestVersionInformation = (downloadObject) => {
+  downloadObject["ver"] = 5000;
+  downloadObject["link"] =
+    "https://www.icloud.com/shortcuts/41ed3432ea1e4bc48e881ad608bb355f";
+  return downloadObject;
+};
