@@ -12,6 +12,7 @@ const {
   shouldAskForSupport,
   makeDownloadObject,
   sanitize,
+  appendAskForSupport,
 } = require("./helpers");
 
 exports.handler = async function http(req) {
@@ -63,9 +64,10 @@ exports.handler = async function http(req) {
 
     downloadObject = sanitize(downloadObject);
 
-    console.log(downloadObject);
+    if (shouldAskForSupport() === true)
+      downloadObject = appendAskForSupport(downloadObject);
 
-    if (shouldAskForSupport() === true) appendAskForSupport();
+    console.log(downloadObject);
 
     // return something only if there are no errors.
     return {

@@ -135,13 +135,17 @@ exports.shouldAskForSupport = () => {
 
   // To double the probability, use 5 (5 & 10). Or to triple, use 3 (3, 6, 9).
 
-  if (Math.ceil(Math.random() * 10) % 7 === 0) return true;
-  else return false;
+  // if (Math.ceil(Math.random() * 10) % 7 === 0) return true;
+  // else return false;
+
+  // hard return for testing
+  return true;
 };
 
-exports.appendAskForSupport = () => {
+exports.appendAskForSupport = (downloadObject) => {
   // add url of the website where to redirect users
-  return;
+  downloadObject["sell"] = "https://www.buymeacoffee.com/saif";
+  return downloadObject;
 };
 
 const calculateSizeBitrate = (bitrate, duration) => {
