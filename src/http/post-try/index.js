@@ -16,7 +16,7 @@ exports.handler = async function http(req) {
         "https://video.twimg.com/ext_tw_video/1050225629256278016/pu/vid/180x320/1TDydRL_AFvzgf4s.mp4?tag=5",
       size: "0.2 MB",
     },
-    sell: null,
+    sell: false,
     ver: 5000,
     link: "https://www.icloud.com/shortcuts/41ed3432ea1e4bc48e881ad608bb355f",
   };
