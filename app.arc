@@ -5,6 +5,7 @@ tvdl-app
 get /
 post /
 get /ver
+post /try
 
 @tables
 data
