@@ -20,6 +20,8 @@ exports.handler = async function http(req) {
     sellLink: "https://buymeacoffee.com/saif",
     sellMessage:
       "Thank you for using TVDL. Supporting millions of users costs quite a lot of money. If you like this shortcut, please consider helping me by supporting this shortcut.",
+    declineMessage:
+      "If you dislike this donation prompt, you can download a version of this shortcut without it, at https://tvdl.saif.dev",
     ver: 5000,
     link: "https://www.icloud.com/shortcuts/41ed3432ea1e4bc48e881ad608bb355f",
   };
