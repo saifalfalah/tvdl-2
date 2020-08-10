@@ -17,6 +17,7 @@ exports.handler = async function http(req) {
       size: "0.2 MB",
     },
     sell: true,
+    sellLink: "https://buymeacoffee.com/saif",
     ver: 5000,
     link: "https://www.icloud.com/shortcuts/41ed3432ea1e4bc48e881ad608bb355f",
   };
