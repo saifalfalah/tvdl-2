@@ -28,6 +28,7 @@ exports.handler = async function http(req) {
 
     // 2. Check if the field url in the body is a url
     const url = body.url;
+    console.log(url);
     checkIsUrl(url);
 
     // 3. Check if twitter URL
@@ -56,7 +57,7 @@ exports.handler = async function http(req) {
 
     data = data.data;
 
-    console.log(JSON.stringify(data));
+    // console.log(JSON.stringify(data));
 
     // console.log(data);
     checkIfContainsVideoOrGif(data);
