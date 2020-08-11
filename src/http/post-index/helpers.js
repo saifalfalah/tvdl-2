@@ -135,11 +135,11 @@ const shouldAskForSupport = () => {
 
   // To double the probability, use 5 (5 & 10). Or to triple, use 3 (3, 6, 9).
 
-  // if (Math.ceil(Math.random() * 10) % 7 === 0) return true;
-  // else return false;
+  if (Math.ceil(Math.random() * 10) % 7 === 0) return true;
+  else return false;
 
   // hard return for testing
-  return true;
+  // return true;
 };
 
 exports.appendAskForSupport = (downloadObject) => {
@@ -147,7 +147,7 @@ exports.appendAskForSupport = (downloadObject) => {
     downloadObject["sell"] = true;
     downloadObject["sellLink"] = "https://buymeacoffee.com/saif";
     downloadObject["sellMessage"] =
-      "Thank you for using TVDL. Supporting millions of users costs quite a lot of money. If you like this shortcut, please consider helping me by supporting this shortcut.";
+      "Thank you for using TVDL. If you like this shortcut, please consider helping me by supporting this shortcut.";
     downloadObject["declineMessage"] =
       "If you dislike this donation prompt, you can download a version of this shortcut without it, at https://tvdl.saif.dev. Thank you!";
   } else downloadObject["sell"] = false;
