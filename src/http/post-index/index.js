@@ -70,8 +70,8 @@ exports.handler = async function http(req) {
 
     downloadObject = appendLatestVersionInformation(downloadObject);
 
-    console.log(downloadObject);
-    console.log(JSON.stringify(downloadObject));
+    // console.log(downloadObject);
+    // console.log(JSON.stringify(downloadObject));
 
     // return something only if there are no errors.
     return {
@@ -79,6 +79,7 @@ exports.handler = async function http(req) {
         "content-type": "application/json; charset=utf8",
       },
       body: JSON.stringify(downloadObject),
+      statusCode: 200,
     };
   } catch (e) {
     // console.log(e.message);
