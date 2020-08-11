@@ -15,7 +15,7 @@ exports.handler = async function http(req) {
       high: {
         downloadURL:
           "https://video.twimg.com/ext_tw_video/1050225629256278016/pu/vid/720x1280/V-g_RcEfrouW4HjN.mp4?tag=5",
-        size: "NA",
+        size: "1.72 MB",
       },
       medium: {
         downloadURL:
