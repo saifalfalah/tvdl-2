@@ -127,7 +127,7 @@ exports.sanitize = (o) => {
   }
   return o;
 };
-exports.shouldAskForSupport = () => {
+const shouldAskForSupport = () => {
   // If the number is divisible by 7, then try selling.
   // Using 7 since 7 is prime and the unbiased probability of
   // generating a multiple of 7 between 2 and 10 should be 1/10
@@ -143,8 +143,15 @@ exports.shouldAskForSupport = () => {
 };
 
 exports.appendAskForSupport = (downloadObject) => {
+  if (shouldAskForSupport()) {
+    downloadObject["sell"] = true;
+    downloadObject["sellLink"] = "https://buymeacoffee.com/saif";
+    downloadObject["sellMessage"] =
+      "Thank you for using TVDL. Supporting millions of users costs quite a lot of money. If you like this shortcut, please consider helping me by supporting this shortcut.";
+    downloadObject["declineMessage"] =
+      "If you dislike this donation prompt, you can download a version of this shortcut without it, at https://tvdl.saif.dev. Thank you!";
+  } else downloadObject["sell"] = false;
   // add url of the website where to redirect users
-  downloadObject["sell"] = "https://www.buymeacoffee.com/saif";
   return downloadObject;
 };
 
@@ -157,7 +164,11 @@ const calculateSizeBitrate = (bitrate, duration) => {
 
 exports.appendLatestVersionInformation = (downloadObject) => {
   downloadObject["ver"] = 5000;
-  downloadObject["link"] =
+  downloadObject["updatePrompt"] =
+    "Shortcut is outdated. Do you wish to update?";
+  downloadObject["updateDeclinedPrompt"] =
+    "If you have any feedback, please visit: tvdl.saif.dev";
+  downloadObject["latestLink"] =
     "https://www.icloud.com/shortcuts/41ed3432ea1e4bc48e881ad608bb355f";
   return downloadObject;
 };

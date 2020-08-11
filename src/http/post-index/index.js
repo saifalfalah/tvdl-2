@@ -65,8 +65,8 @@ exports.handler = async function http(req) {
 
     downloadObject = sanitize(downloadObject);
 
-    if (shouldAskForSupport() === true)
-      downloadObject = appendAskForSupport(downloadObject);
+    // if (shouldAskForSupport() === true)
+    downloadObject = appendAskForSupport(downloadObject);
 
     downloadObject = appendLatestVersionInformation(downloadObject);
 
