@@ -21,7 +21,7 @@ exports.handler = async function http(req) {
   // console.log(body);
 
   try {
-    if (!body) throw new Error("600: Empty Request. Update your shortcut.");
+    if (!body) throw new Error(600);
 
     // 1. Check if the body contains the field url
     checkBodyUrl(body);
@@ -36,7 +36,7 @@ exports.handler = async function http(req) {
     // 4. Check if the URL contains a video
     // Getting the Tweet Path
     const tweetPath = getTweetPath(url);
-    if (!tweetPath) throw new Error("604: Not a tweet");
+    if (!tweetPath) throw new Error(604);
     // console.log(tweetPath);
 
     // 5. Prepare api request url
@@ -83,13 +83,34 @@ exports.handler = async function http(req) {
   } catch (e) {
     // console.log(e.message);
     console.error(e.message);
+    let errorMessages = {
+      600: "Empty request.",
+      601: "No URL found.",
+      602: "Not a URL.",
+      603: "Not a Twitter URL.",
+      604: "Not a tweet.",
+      605: "Video / GIF not found.",
+    };
+
+    let error;
+
+    if (errorMessages[e.message]) {
+      error = {
+        error:
+          errorMessages[e.message] + " Please update / reset your shortcut.",
+      };
+    } else
+      error = {
+        error:
+          "Something blew up. Please send an email to tvdl@saif.dev for more help",
+      };
+
     return {
       headers: {
-        "cache-control":
-          "no-cache, no-store, must-revalidate, max-age=0, s-maxage=0",
-        "content-type": "text/html; charset=utf8",
+        "content-type": "application/json; charset=utf8",
       },
-      body: `<div>${e.message}</div>`,
+      body: JSON.stringify(error),
+      statusCode: 400,
     };
   } finally {
     // console.log("finally");

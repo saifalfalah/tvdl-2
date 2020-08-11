@@ -2,11 +2,11 @@ const parse = require("url-parse");
 let isURL = require("is-url");
 
 exports.checkBodyUrl = (body) => {
-  if (!body.url) throw new Error("601: No url found");
+  if (!body.url) throw new Error(601);
 };
 
 exports.checkIsUrl = (url) => {
-  if (!isURL(url)) throw new Error("602: Not a url");
+  if (!isURL(url)) throw new Error(602);
 };
 
 exports.checkIfTwitterUrl = (url) => {
@@ -16,7 +16,7 @@ exports.checkIfTwitterUrl = (url) => {
     parsedUrl.hostname !== "www.twitter.com" &&
     parsedUrl.hostname !== "mobile.twitter.com"
   )
-    throw new Error("603: Not a twitter url");
+    throw new Error(603);
 };
 
 exports.getTweetPath = (url) => parse(url).pathname.split("/")[3];
@@ -29,7 +29,7 @@ exports.checkIfContainsVideoOrGif = (data) => {
     !data.hasOwnProperty("extended_entities") ||
     !data.extended_entities.media[0].video_info
   )
-    throw new Error("605: Video / GIF not found");
+    throw new Error(605);
 };
 
 exports.getBitrate = (data) => {
