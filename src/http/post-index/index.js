@@ -81,7 +81,8 @@ exports.handler = async function http(req) {
       body: JSON.stringify(downloadObject),
     };
   } catch (e) {
-    console.log(e.message);
+    // console.log(e.message);
+    console.error(e.message);
     return {
       headers: {
         "cache-control":
