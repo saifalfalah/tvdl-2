@@ -1,5 +1,9 @@
-// learn more about HTTP functions here: https://arc.codes/primitives/http
+let arc = require("@architect/functions");
+let parseBody = arc.http.helpers.bodyParser;
+
 exports.handler = async function http(req) {
+  let body = parseBody(req);
+  console.log(body);
   let response = {
     high: {
       downloadURL:
