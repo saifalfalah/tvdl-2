@@ -35,6 +35,8 @@ exports.handler = async function http(req) {
         "If you dislike this donation prompt, you can download a version of this shortcut without it, at https://tvdl.saif.dev. Thank you!",
       ver: 5000,
       updatePrompt: "Shortcut is outdated. Do you wish to update?",
+      updateDeclinedPrompt:
+        "If you have any feedback, please visit: tvdl.saif.dev",
       latestLink:
         "https://www.icloud.com/shortcuts/41ed3432ea1e4bc48e881ad608bb355f",
     };
