@@ -56,6 +56,8 @@ exports.handler = async function http(req) {
 
     data = data.data;
 
+    console.log(JSON.stringify(data));
+
     // console.log(data);
     checkIfContainsVideoOrGif(data);
 

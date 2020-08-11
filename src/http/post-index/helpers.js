@@ -163,7 +163,7 @@ const calculateSizeBitrate = (bitrate, duration) => {
 };
 
 exports.appendLatestVersionInformation = (downloadObject) => {
-  downloadObject["ver"] = 5000;
+  downloadObject["ver"] = 300;
   downloadObject["updatePrompt"] =
     "Shortcut is outdated. Do you wish to update?";
   downloadObject["updateDeclinedPrompt"] =
