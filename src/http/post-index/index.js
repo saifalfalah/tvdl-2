@@ -13,6 +13,7 @@ const {
   sanitize,
   appendAskForSupport,
   appendLatestVersionInformation,
+  checkClientVersion,
 } = require("./helpers");
 
 exports.handler = async function http(req) {
@@ -21,6 +22,9 @@ exports.handler = async function http(req) {
 
   try {
     if (!body) throw new Error(600);
+
+    // Check versions
+    checkClientVersion(body);
 
     // 1. Check if the body contains the field url
     checkBodyUrl(body);
@@ -99,6 +103,8 @@ exports.handler = async function http(req) {
       603: "Not a Twitter URL.",
       604: "Not a tweet.",
       605: "Video / GIF not found.",
+      606: "Shortcut compromised.",
+      607: "Outdated shortcut version.",
     };
 
     let error;
@@ -106,7 +112,8 @@ exports.handler = async function http(req) {
     if (errorMessages[e.message]) {
       error = {
         error:
-          errorMessages[e.message] + " Please update / reset your shortcut.",
+          errorMessages[e.message] +
+          " Please go to tvdl.saif.dev to update / reset your shortcut.",
       };
     } else
       error = {
