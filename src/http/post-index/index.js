@@ -56,7 +56,12 @@ exports.handler = async function http(req) {
     });
 
     data = data.data;
-
+    // return {
+    //   headers: {
+    //     "content-type": "application/json; charset=utf8",
+    //   },
+    //   body: JSON.stringify(data),
+    // };
     // console.log(JSON.stringify(data));
 
     // console.log(data);
