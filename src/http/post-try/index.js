@@ -27,7 +27,7 @@ exports.handler = async function http(req) {
           "https://video.twimg.com/ext_tw_video/1050225629256278016/pu/vid/180x320/1TDydRL_AFvzgf4s.mp4?tag=5",
         size: "0.2 MB",
       },
-      sell: false,
+      sell: true,
       sellLink: "https://buymeacoffee.com/saif",
       sellMessage:
         "Thank you for using TVDL. Supporting millions of users costs quite a lot of money. If you like this shortcut, please consider helping me by supporting this shortcut.",
