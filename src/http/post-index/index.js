@@ -9,7 +9,6 @@ const {
   getApiRequestUrl,
   checkIfContainsVideoOrGif,
   getBitrate,
-  shouldAskForSupport,
   makeDownloadObject,
   sanitize,
   appendAskForSupport,
@@ -60,14 +59,15 @@ exports.handler = async function http(req) {
     //   headers: {
     //     "content-type": "application/json; charset=utf8",
     //   },
-    //   body: JSON.stringify(data),
+    //   body: JSON.stringify(data.extended_entities),
     // };
     // console.log(JSON.stringify(data));
 
-    // console.log(data);
+    // console.log(data.extended_entities);
     checkIfContainsVideoOrGif(data);
 
     let bitrates = getBitrate(data);
+    // console.log(bitrates);
 
     let downloadObject = makeDownloadObject(data, bitrates);
 

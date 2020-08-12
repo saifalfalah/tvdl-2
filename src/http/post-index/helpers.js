@@ -90,8 +90,10 @@ exports.makeDownloadObject = (data, bitrates) => {
         if (variant.bitrate === bitrates[0]) videoUrl = variant.url;
       });
       low.downloadURL = videoUrl;
-      let size = calculateSizeBitrate(bitrates[0], duration);
-      low.size = size;
+      if (duration) {
+        let size = calculateSizeBitrate(bitrates[0], duration);
+        low.size = size;
+      } else low.size = "GIF";
       downloadObject.low = low;
       bitrates.pop();
     }
