@@ -32,8 +32,8 @@ exports.handler = async function http(req) {
       sellMessage:
         "Thank you for using TVDL. Supporting millions of users costs quite a lot of money. If you like this shortcut, please consider helping me by supporting this shortcut.",
       declineMessage:
-        "If you dislike this donation prompt, you can download a version of this shortcut without it, at https://tvdl.saif.dev. Thank you!",
-      ver: 300,
+        "If you dislike this donation prompt, you can download a version of this shortcut without it, at tvdl.saif.dev. Thank you!",
+      ver: 1400,
       updatePrompt: "Shortcut is outdated. Do you wish to update?",
       updateDeclinedPrompt:
         "If you have any feedback, please visit: tvdl.saif.dev",
