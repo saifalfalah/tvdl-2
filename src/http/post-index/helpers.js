@@ -3,8 +3,6 @@ let isURL = require("is-url");
 
 exports.checkClientVersion = (body) => {
   if (!body.ver) throw new Error(606);
-  console.log(body.ver);
-  console.log(process.env.MIN_VER);
   if (parseInt(body.ver) < parseInt(process.env.MIN_VER)) throw new Error(607);
 };
 
