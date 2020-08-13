@@ -22,14 +22,6 @@ exports.handler = async function http(req) {
   let body = parseBody(req);
   // console.log(body);
 
-  // table = requests
-  // key = date
-  // value = number of requests today
-
-  let table = "requests";
-  let key = lightFormat(toDate(Date.now()), "yyyy-MM-dd");
-  await data.incr({ table, key, prop: "total" });
-
   try {
     if (!body) throw new Error(600);
 
@@ -141,7 +133,15 @@ exports.handler = async function http(req) {
       statusCode: 400,
     };
   } finally {
-    // console.log("finally");
     // Save data in begin here
+    // console.log("finally");
+    // table = requests
+    // key = date
+    // prop = total number of requests today
+    // value = number of requests today
+
+    let table = "requests";
+    let key = lightFormat(toDate(Date.now()), "yyyy-MM-dd");
+    await data.incr({ table, key, prop: "totalRequests" });
   }
 };
