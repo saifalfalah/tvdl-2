@@ -28,7 +28,7 @@ exports.handler = async function http(req) {
 
   let table = "requests";
   let key = lightFormat(toDate(Date.now()), "yyyy-MM-dd");
-  await data.incr({ table, key, prop: "200" });
+  await data.incr({ table, key, prop: "_200" });
 
   try {
     if (!body) throw new Error(600);
