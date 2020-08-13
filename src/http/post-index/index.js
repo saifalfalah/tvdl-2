@@ -1,6 +1,8 @@
 let arc = require("@architect/functions");
+let data = require("@begin/data");
 let parseBody = arc.http.helpers.bodyParser;
 let axios = require("axios");
+const { toDate, lightFormat } = require("date-fns");
 const {
   checkBodyUrl,
   checkIsUrl,
@@ -19,6 +21,14 @@ const {
 exports.handler = async function http(req) {
   let body = parseBody(req);
   // console.log(body);
+
+  // table = requests
+  // key = date
+  // value = number of requests today
+
+  let table = "requests";
+  let key = lightFormat(toDate(Date.now()), "yyyy-MM-dd");
+  await data.incr({ table, key, prop: "200" });
 
   try {
     if (!body) throw new Error(600);

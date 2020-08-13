@@ -18,7 +18,9 @@
   "license": "ISC",
   "dependencies": {
     "@architect/functions": "^3.12.3",
+    "@begin/data": "^1.2.3",
     "axios": "^0.19.2",
+    "date-fns": "^2.15.0",
     "is-url": "^1.2.4",
     "url-parse": "^1.4.7"
   }
