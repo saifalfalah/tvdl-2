@@ -20,6 +20,7 @@ const {
 
 exports.handler = async function http(req) {
   let body = parseBody(req);
+  let didUpsell = false;
   // console.log(body);
 
   try {
@@ -82,6 +83,8 @@ exports.handler = async function http(req) {
     // if (shouldAskForSupport() === true)
     downloadObject = appendAskForSupport(downloadObject);
 
+    if (downloadObject["sell"] === true) didUpsell = true;
+
     downloadObject = appendLatestVersionInformation(downloadObject);
 
     // console.log(downloadObject);
@@ -143,5 +146,6 @@ exports.handler = async function http(req) {
     let table = "requests";
     let key = lightFormat(toDate(Date.now()), "yyyy-MM-dd");
     await data.incr({ table, key, prop: "totalRequests" });
+    if (didUpsell) await data.incr({ table, key, prop: "totalUpsells" });
   }
 };
