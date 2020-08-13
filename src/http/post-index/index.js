@@ -28,7 +28,7 @@ exports.handler = async function http(req) {
 
   let table = "requests";
   let key = lightFormat(toDate(Date.now()), "yyyy-MM-dd");
-  await data.incr({ table, key, prop: "SC200" });
+  await data.incr({ table, key, prop: "total" });
 
   try {
     if (!body) throw new Error(600);
@@ -95,6 +95,8 @@ exports.handler = async function http(req) {
     // console.log(downloadObject);
     // console.log(JSON.stringify(downloadObject));
 
+    // SC = Status Code 200
+    // await data.incr({ table, key, prop: "SC200" });
     // return something only if there are no errors.
     return {
       headers: {
