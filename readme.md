@@ -1,12 +1,9 @@
-# Backend for TVDL - 2
+# Twitter Video Downloader
 
-## Still a work in progress...
+## API for Twitter Video Downloader for Siri Shortcuts v3.0 and above
 
-TODO:
+Download the shortcut here: [TVDL Website](https://tvdl.saif.dev)
 
-1. Check if it is a URL; else throw Error
-2. Check if it is a Twitter URL; else throw Error
-3. Retrieve data from Twitter;
-4. If it contains video, extract all 3 sizes URL; else throw Error
-5. Read Begin Data. If it is a 10th request, set upsell to true
-6. Send it to the client
+The project is hosted on [Begin](https://begin.com) and is based on the [Architect Serverless Framework](https://arc.codes/).
+
+If you like this shortcut, please consider supporting me: [SUPPORT](https://www.buymeacoffee.com/saif)
