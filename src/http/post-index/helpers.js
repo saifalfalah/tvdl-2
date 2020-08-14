@@ -23,6 +23,7 @@ exports.checkIsUrl = (url) => {
 
 exports.checkIfTwitterUrl = (url) => {
   const parsedUrl = parse(url);
+  console.log(parsedUrl);
   if (
     parsedUrl.hostname !== "twitter.com" &&
     parsedUrl.hostname !== "www.twitter.com" &&
