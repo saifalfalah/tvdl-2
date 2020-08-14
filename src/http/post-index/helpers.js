@@ -1,10 +1,17 @@
 const parse = require("url-parse");
 let isURL = require("is-url");
+// const latestVersion = 1303;
 
 exports.checkClientVersion = (body) => {
   if (!body.ver) throw new Error(606);
   if (parseInt(body.ver) < parseInt(process.env.MIN_VER)) throw new Error(607);
 };
+
+// const isVersionSupported = (ver) => {
+//   let supportedVersions = [1303, 1304];
+//   if (supportedVersions.includes(ver)) return true;
+//   else return false;
+// };
 
 exports.checkBodyUrl = (body) => {
   if (!body.url) throw new Error(601);
