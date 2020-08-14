@@ -26,7 +26,7 @@ exports.handler = async function http(req) {
 
   try {
     if (!body) throw new Error(600);
-    console.log(body);
+    // console.log(body);
 
     // if (body.ver) clientVer = body.ver;
     // Check versions
