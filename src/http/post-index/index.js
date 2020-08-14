@@ -21,12 +21,14 @@ const {
 exports.handler = async function http(req) {
   let body = parseBody(req);
   let didUpsell = false;
+  // let clientVer;
   // console.log(body);
 
   try {
     if (!body) throw new Error(600);
     console.log(body);
 
+    // if (body.ver) clientVer = body.ver;
     // Check versions
     checkClientVersion(body);
 

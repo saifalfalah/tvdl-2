@@ -7,6 +7,7 @@ exports.checkClientVersion = (body) => {
   if (parseInt(body.ver) < parseInt(process.env.MIN_VER)) throw new Error(607);
 };
 
+// implement this in SSVD
 // const isVersionSupported = (ver) => {
 //   let supportedVersions = [1303, 1304];
 //   if (supportedVersions.includes(ver)) return true;
