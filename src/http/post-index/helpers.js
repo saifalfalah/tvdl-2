@@ -24,7 +24,7 @@ exports.checkIsUrl = (url) => {
 
 exports.checkIfTwitterUrl = (url) => {
   const parsedUrl = parse(url);
-  console.log(parsedUrl);
+  // console.log(parsedUrl);
   if (
     parsedUrl.hostname !== "twitter.com" &&
     parsedUrl.hostname !== "www.twitter.com" &&
@@ -107,7 +107,14 @@ exports.makeDownloadObject = (data, bitrates) => {
       if (duration) {
         let size = calculateSizeBitrate(bitrates[0], duration);
         low.size = size;
-      } else low.size = "GIF";
+      } else {
+        low.size = "GIF";
+        let name = variants[0].url.split("/")[4];
+        // console.log(name);
+        name = name.split(".")[0];
+        low.name = name;
+        // console.log(low.name);
+      }
       downloadObject.low = low;
       bitrates.pop();
     }

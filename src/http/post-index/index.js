@@ -26,7 +26,7 @@ exports.handler = async function http(req) {
 
   try {
     if (!body) throw new Error(600);
-    console.log(body);
+    // console.log(body);
 
     // if (body.ver) clientVer = body.ver;
     // Check versions
@@ -65,6 +65,7 @@ exports.handler = async function http(req) {
     });
 
     data = data.data;
+    // console.log(data);
     // return {
     //   headers: {
     //     "content-type": "application/json; charset=utf8",
@@ -80,6 +81,8 @@ exports.handler = async function http(req) {
     // console.log(bitrates);
 
     let downloadObject = makeDownloadObject(data, bitrates);
+
+    // console.log(downloadObject);
 
     downloadObject = sanitize(downloadObject);
 
