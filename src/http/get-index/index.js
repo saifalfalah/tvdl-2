@@ -46,8 +46,8 @@ let body = `
 // Forward requester to a new path
 exports.handler = async function http(req) {
   return {
-    statusCode: 302,
-    headers: { location: "https://tvdl.saif.dev" },
+    statusCode: 301,
+    headers: { location: "https://www.tvdl.app" },
   };
 };
 
