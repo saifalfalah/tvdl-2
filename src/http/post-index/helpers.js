@@ -173,7 +173,7 @@ exports.appendAskForSupport = (downloadObject) => {
     downloadObject["sellMessage"] =
       "Thank you for using TVDL. If you like this shortcut, please consider helping me by supporting this shortcut.";
     downloadObject["declineMessage"] =
-      "If you dislike this donation prompt, you can download a version of this shortcut without it, at https://tvdl.saif.dev. Thank you!";
+      "If you dislike this donation prompt, you can download a version of this shortcut without it, at www.tvdl.app. Thank you!";
   } else downloadObject["sell"] = false;
   // add url of the website where to redirect users
   return downloadObject;
@@ -191,7 +191,7 @@ exports.appendLatestVersionInformation = (downloadObject) => {
   downloadObject["updatePrompt"] =
     "Shortcut is outdated. Do you wish to update?";
   downloadObject["updateDeclinedPrompt"] =
-    "If you have any feedback, please visit: tvdl.saif.dev";
+    "If you have any feedback, please visit: www.tvdl.app";
   downloadObject["latestLink"] =
     "https://www.icloud.com/shortcuts/41ed3432ea1e4bc48e881ad608bb355f";
   return downloadObject;

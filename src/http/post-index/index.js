@@ -126,7 +126,7 @@ exports.handler = async function http(req) {
       error = {
         error:
           errorMessages[e.message] +
-          " Please go to tvdl.saif.dev to update / reset your shortcut.",
+          " Please go to www.tvdl.app to update / reset your shortcut.",
       };
     } else
       error = {
