@@ -126,12 +126,12 @@ exports.handler = async function http(req) {
       error = {
         error:
           errorMessages[e.message] +
-          " Please go to www.tvdl.app to update / reset your shortcut.",
+          " Try Again. If problem persists, please go to www.tvdl.app to update / reset your shortcut.",
       };
     } else
       error = {
         error:
-          "Something blew up. Please send an email to help@tvdl.app for more help",
+          "Something blew up. Please try again. If problem persists, please send an email to help@tvdl.app for more help",
       };
 
     return {
