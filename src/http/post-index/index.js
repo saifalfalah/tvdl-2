@@ -131,7 +131,7 @@ exports.handler = async function http(req) {
     } else
       error = {
         error:
-          "Something blew up. Please send an email to tvdl@saif.dev for more help",
+          "Something blew up. Please send an email to help@tvdl.app for more help",
       };
 
     return {
