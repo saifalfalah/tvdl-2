@@ -1,10 +1,20 @@
 const parse = require("url-parse");
 let isURL = require("is-url");
-// const latestVersion = 1303;
+/*
+Versions:
+1303: v3
+1306: v3.1
+1307: v3.1 iOS 12 RC1
+1308: v3.1 iOS 12
+*/
+
+let supportedVersions = [1303, 1306, 1307, 1308];
+let upForUpdate = [];
 
 exports.checkClientVersion = (body) => {
   if (!body.ver) throw new Error(606);
-  if (parseInt(body.ver) < parseInt(process.env.MIN_VER)) throw new Error(607);
+  if (!supportedVersions.includes(parseInt(body.ver))) throw new Error(607);
+  // if (parseInt(body.ver) < parseInt(process.env.MIN_VER)) throw new Error(607);
 };
 
 // implement this in SSVD
