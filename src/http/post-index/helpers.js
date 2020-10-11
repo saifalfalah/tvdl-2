@@ -184,6 +184,8 @@ exports.appendAskForSupport = (downloadObject) => {
       "Thank you for using TVDL. If you like this shortcut, please consider helping me by supporting this shortcut.";
     downloadObject["declineMessage"] =
       "If you dislike this donation prompt, you can download a version of this shortcut without it, at www.tvdl.app. Thank you!";
+    downloadObject["yesPrompt"] = "Yes, I will support 😀";
+    downloadObject["noPrompt"] = "No, I will not 🙁";
   } else downloadObject["sell"] = false;
   // add url of the website where to redirect users
   return downloadObject;
