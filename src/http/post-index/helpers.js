@@ -169,11 +169,11 @@ const shouldAskForSupport = () => {
   // To double the probability, use 5 (5 & 10). Or to triple, use 3 (3, 6, 9).
   // For upsell in 1 out 10 requests, using 7 (default) since 7 is a prime number
 
-  if (Math.ceil(Math.random() * 10) % 7 === 0) return true;
-  else return false;
+  // if (Math.ceil(Math.random() * 10) % 7 === 0) return true;
+  // else return false;
 
   // hard return for testing
-  // return true;
+  return true;
 };
 
 exports.appendAskForSupport = (downloadObject) => {
