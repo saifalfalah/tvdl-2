@@ -201,7 +201,7 @@ const calculateSizeBitrate = (bitrate, duration) => {
 exports.appendLatestVersionInformation = (downloadObject) => {
   downloadObject["ver"] = 300;
   downloadObject["updatePrompt"] =
-    "Shortcut is outdated. Do you wish to update?";
+    "New version of TVDL is available. Do you wish to update?";
   downloadObject["updateDeclinedPrompt"] =
     "If you have any feedback, please visit: www.tvdl.app";
   downloadObject["latestLink"] =
