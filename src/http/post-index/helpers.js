@@ -199,13 +199,32 @@ const calculateSizeBitrate = (bitrate, duration) => {
   return size;
 };
 
-exports.appendLatestVersionInformation = (downloadObject) => {
-  downloadObject["ver"] = 300;
+exports.appendLatestVersionInformation = (downloadObject, ver) => {
   downloadObject["updatePrompt"] =
     "New version of TVDL is available. Do you wish to update?";
   downloadObject["updateDeclinedPrompt"] =
     "If you have any feedback, please visit: www.tvdl.app";
-  downloadObject["latestLink"] =
-    "https://www.icloud.com/shortcuts/41ed3432ea1e4bc48e881ad608bb355f";
+
+  // If it is iOS 12, then send latest link for iOS 12.
+  // Otherwise send latest link for iOS 13 & Later.
+  if (upForUpdate.includes(ver)) {
+    // append new version
+    if (ver === 1307) {
+      // append iOS 12
+      downloadObject["ver"] = 1308;
+      // TODO: Update this link
+      downloadObject["latestLink"] =
+        "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
+    } else if (ver === 1303) {
+      // append iOS 13 & above
+      downloadObject["ver"] = 1306;
+      downloadObject["latestLink"] =
+        "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
+    }
+  } else {
+    downloadObject["ver"] = ver;
+    downloadObject["latestLink"] =
+      "https://www.icloud.com/shortcuts/41ed3432ea1e4bc48e881ad608bb355f";
+  }
   return downloadObject;
 };

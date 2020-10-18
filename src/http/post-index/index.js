@@ -91,7 +91,7 @@ exports.handler = async function http(req) {
 
     if (downloadObject["sell"] === true) didUpsell = true;
 
-    downloadObject = appendLatestVersionInformation(downloadObject);
+    downloadObject = appendLatestVersionInformation(downloadObject, body.ver);
 
     // console.log(downloadObject);
     // console.log(JSON.stringify(downloadObject));
