@@ -9,7 +9,7 @@ Versions:
 */
 
 let supportedVersions = [1303, 1306, 1307, 1308];
-let upForUpdate = [1307];
+let upForUpdate = [1309];
 
 exports.checkClientVersion = (body) => {
   if (!body.ver) throw new Error(606);
