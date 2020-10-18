@@ -179,7 +179,8 @@ const shouldAskForSupport = () => {
 exports.appendAskForSupport = (downloadObject) => {
   if (shouldAskForSupport()) {
     downloadObject["sell"] = true;
-    downloadObject["sellLink"] = "https://tvdl-donate.saifalfalah.workers.dev/";
+    downloadObject["sellLink"] =
+      "https://support-tvdl.saifalfalah.workers.dev/";
     downloadObject["sellMessage"] =
       "Thank you for using TVDL. If you like this shortcut, please consider helping me by supporting this shortcut.";
     downloadObject["declineMessage"] =
