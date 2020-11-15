@@ -219,6 +219,8 @@ exports.appendLatestVersionInformation = (downloadObject, ver) => {
   downloadObject["updateDeclinedPrompt"] =
     "If you have any feedback, please visit: www.tvdl.app";
 
+  ver = parseInt(ver);
+
   // If it is iOS 12, then send latest link for iOS 12.
   // Otherwise send latest link for iOS 13 & Later.
   if (versions.ios12.includes(ver)) {
