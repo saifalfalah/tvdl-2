@@ -21,14 +21,10 @@ const {
 exports.handler = async function http(req) {
   let body = parseBody(req);
   let didUpsell = false;
-  // let clientVer;
-  // console.log(body);
 
   try {
     if (!body) throw new Error(600);
-    // console.log(body);
 
-    // if (body.ver) clientVer = body.ver;
     // Check versions
     checkClientVersion(body);
 
@@ -109,7 +105,7 @@ exports.handler = async function http(req) {
     } else
       error = {
         error:
-          "Something blew up. Please try again. If problem persists, please send an email to help@tvdl.app for more help",
+          "An unexpected error occurred. Try again. If problem persists, please send an email to help@tvdl.app for more help",
       };
 
     return {
