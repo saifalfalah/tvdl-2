@@ -8,12 +8,25 @@ Versions:
 1308: v3.1 iOS 12
 */
 
-let supportedVersions = [1303, 1306, 1307, 1308];
+let versions = {
+  ios12: [1307, 1308],
+  ios12ToUpdate: [],
+  ios12UnSupported: [],
+  ios13: [1303, 1306],
+  ios13ToUpdate: [],
+  ios13UnSupported: [],
+};
+
+// let supportedVersions = [1303, 1306, 1307, 1308];
 let upForUpdate = [1307];
 
 exports.checkClientVersion = (body) => {
   if (!body.ver) throw new Error(606);
-  if (!supportedVersions.includes(parseInt(body.ver))) throw new Error(607);
+  let unSupportedVersions = [
+    ...versions.ios12UnSupported,
+    ...versions.ios13UnSupported,
+  ];
+  if (unSupportedVersions.includes(parseInt(body.ver))) throw new Error(607);
   // if (parseInt(body.ver) < parseInt(process.env.MIN_VER)) throw new Error(607);
 };
 
