@@ -72,8 +72,7 @@ exports.handler = async function http(req) {
 
     downloadObject = sanitize(downloadObject);
 
-    if (shouldAskForSupport() === true)
-      downloadObject = appendAskForSupport(downloadObject);
+    downloadObject = appendAskForSupport(downloadObject);
 
     if (downloadObject["sell"] === true) didUpsell = true;
 
