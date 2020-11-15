@@ -5,6 +5,7 @@ Versions:
 1303: v3
 1306: v3.1
 1307: v3.1 iOS 12 RC1
+1308 - v3.1 Max-Q ND Edition
 1309: v3.1 iOS 12
 */
 
@@ -230,7 +231,7 @@ exports.appendLatestVersionInformation = (downloadObject, ver) => {
           "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
         break;
       default:
-        downloadObject["ver"] = 1308;
+        downloadObject["ver"] = 1307;
         // TODO: Update this link
         downloadObject["latestLink"] =
           "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
@@ -243,6 +244,17 @@ exports.appendLatestVersionInformation = (downloadObject, ver) => {
         downloadObject["ver"] = 1306;
         downloadObject["latestLink"] =
           "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
+        break;
+      case 1306:
+        downloadObject["ver"] = 1307;
+        downloadObject["latestLink"] =
+          "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
+        break;
+      case 1308:
+        downloadObject["ver"] = 1308;
+        // link verified and is for version 1308
+        downloadObject["latestLink"] =
+          "https://www.icloud.com/shortcuts/8002d771575b42449fbfd14be11e661d";
         break;
       default:
         downloadObject["ver"] = 1306;
