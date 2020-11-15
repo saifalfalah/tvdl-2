@@ -182,12 +182,11 @@ const shouldAskForSupport = () => {
 
   // To double the probability, use 5 (5 & 10). Or to triple, use 3 (3, 6, 9).
   // For upsell in 1 out 10 requests, using 7 (default) since 7 is a prime number
-  // TODO: Remove comment
-  // if (Math.ceil(Math.random() * 10) % 7 === 0) return true;
-  // else return false;
+  if (Math.ceil(Math.random() * 10) % 7 === 0) return true;
+  else return false;
 
   // hard return for testing
-  return true;
+  // return true;
 };
 
 exports.appendAskForSupport = (downloadObject) => {
@@ -265,25 +264,5 @@ exports.appendLatestVersionInformation = (downloadObject, ver) => {
         break;
     }
   }
-
-  // if (upForUpdate.includes(ver)) {
-  //   // append new version
-  //   if (ver === 1307) {
-  //     // append iOS 12
-  //     downloadObject["ver"] = 1308;
-  //     // TODO: Update this link
-  //     downloadObject["latestLink"] =
-  //       "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
-  //   } else if (ver === 1303) {
-  //     // append iOS 13 & above
-  //     downloadObject["ver"] = 1306;
-  //     downloadObject["latestLink"] =
-  //       "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
-  //   }
-  // } else {
-  //   downloadObject["ver"] = ver;
-  //   downloadObject["latestLink"] =
-  //     "https://www.icloud.com/shortcuts/41ed3432ea1e4bc48e881ad608bb355f";
-  // }
   return downloadObject;
 };
