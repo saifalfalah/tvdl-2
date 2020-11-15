@@ -248,7 +248,7 @@ exports.appendLatestVersionInformation = (downloadObject, ver) => {
           "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
         break;
       case 1306:
-        downloadObject["ver"] = 1307;
+        downloadObject["ver"] = 1306;
         downloadObject["latestLink"] =
           "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
         break;
