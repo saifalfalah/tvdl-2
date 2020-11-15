@@ -37,7 +37,7 @@ exports.handler = async function http(req) {
 
     // 2. Check if the field url in the body is a url
     const url = body.url;
-    console.log(url);
+    // console.log(url);
     checkIsUrl(url);
 
     // 3. Check if twitter URL
@@ -47,15 +47,11 @@ exports.handler = async function http(req) {
     // Getting the Tweet Path
     const tweetPath = getTweetPath(url);
     if (!tweetPath) throw new Error(604);
-    // console.log(tweetPath);
 
     // 5. Prepare api request url
     const requestUrl = getApiRequestUrl(tweetPath);
-    // console.log(requestUrl);
 
-    // console.log(process.env.TOKEN);
     let data;
-    // console.log("Sending request to Twitter API");
     data = await axios({
       method: "get",
       url: requestUrl,
@@ -65,20 +61,10 @@ exports.handler = async function http(req) {
     });
 
     data = data.data;
-    // console.log(data);
-    // return {
-    //   headers: {
-    //     "content-type": "application/json; charset=utf8",
-    //   },
-    //   body: JSON.stringify(data.extended_entities),
-    // };
-    // console.log(JSON.stringify(data));
 
-    // console.log(data.extended_entities);
     checkIfContainsVideoOrGif(data);
 
     let bitrates = getBitrate(data);
-    // console.log(bitrates);
 
     let downloadObject = makeDownloadObject(data, bitrates);
 
@@ -86,20 +72,13 @@ exports.handler = async function http(req) {
 
     downloadObject = sanitize(downloadObject);
 
-    // TODO: Remove comment
-    // if (shouldAskForSupport() === true)
-    downloadObject = appendAskForSupport(downloadObject);
+    if (shouldAskForSupport() === true)
+      downloadObject = appendAskForSupport(downloadObject);
 
     if (downloadObject["sell"] === true) didUpsell = true;
 
     downloadObject = appendLatestVersionInformation(downloadObject, body.ver);
 
-    // console.log(downloadObject);
-    // console.log(JSON.stringify(downloadObject));
-
-    // SC = Status Code 200
-    // await data.incr({ table, key, prop: "SC200" });
-    // return something only if there are no errors.
     return {
       headers: {
         "content-type": "application/json; charset=utf8",
@@ -108,7 +87,6 @@ exports.handler = async function http(req) {
       statusCode: 200,
     };
   } catch (e) {
-    // console.log(e.message);
     console.error(e.message);
     let errorMessages = {
       600: "Empty request.",
@@ -144,7 +122,6 @@ exports.handler = async function http(req) {
     };
   } finally {
     // Save data in begin here
-    // console.log("finally");
     // table = requests
     // key = date
     // prop = total number of requests today

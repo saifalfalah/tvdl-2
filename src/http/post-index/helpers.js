@@ -27,15 +27,7 @@ exports.checkClientVersion = (body) => {
   if (!body.ver) throw new Error(606);
   let supportedVersions = [...versions.ios12, ...versions.ios13];
   if (!supportedVersions.includes(parseInt(body.ver))) throw new Error(607);
-  // if (parseInt(body.ver) < parseInt(process.env.MIN_VER)) throw new Error(607);
 };
-
-// implement this in SSVD
-// const isVersionSupported = (ver) => {
-//   let supportedVersions = [1303, 1304];
-//   if (supportedVersions.includes(ver)) return true;
-//   else return false;
-// };
 
 exports.checkBodyUrl = (body) => {
   if (!body.url) throw new Error(601);
@@ -47,7 +39,6 @@ exports.checkIsUrl = (url) => {
 
 exports.checkIfTwitterUrl = (url) => {
   const parsedUrl = parse(url);
-  // console.log(parsedUrl);
   if (
     parsedUrl.hostname !== "twitter.com" &&
     parsedUrl.hostname !== "www.twitter.com" &&
@@ -133,10 +124,8 @@ exports.makeDownloadObject = (data, bitrates) => {
       } else {
         low.size = "GIF";
         let name = variants[0].url.split("/")[4];
-        // console.log(name);
         name = name.split(".")[0];
         low.name = name;
-        // console.log(low.name);
       }
       downloadObject.low = low;
       bitrates.pop();
@@ -201,7 +190,7 @@ exports.appendAskForSupport = (downloadObject) => {
     downloadObject["yesPrompt"] = "Yes, I will support 😀";
     downloadObject["noPrompt"] = "No, I will not 🙁";
   } else downloadObject["sell"] = false;
-  // add url of the website where to redirect users
+  // add url of the website where to redirect users for upsell
   return downloadObject;
 };
 
@@ -243,11 +232,13 @@ exports.appendLatestVersionInformation = (downloadObject, ver) => {
     switch (ver) {
       case 1303:
         downloadObject["ver"] = 1306;
+        // link verified for version 1306
         downloadObject["latestLink"] =
           "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
         break;
       case 1306:
         downloadObject["ver"] = 1306;
+        // link verified for version 1306
         downloadObject["latestLink"] =
           "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
         break;
@@ -259,6 +250,7 @@ exports.appendLatestVersionInformation = (downloadObject, ver) => {
         break;
       default:
         downloadObject["ver"] = 1306;
+        // link verified for version 1306
         downloadObject["latestLink"] =
           "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
         break;
