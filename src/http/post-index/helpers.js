@@ -8,9 +8,11 @@ Versions:
 1309: v3.1 iOS 12
 */
 
+// To put a shortcut on update just add it to the "ToUpdate" array.
+// To deprecate, put it in the UnSupported array.
 let versions = {
   ios12: [1307, 1309],
-  ios12ToUpdate: [],
+  ios12ToUpdate: [1307],
   ios12UnSupported: [1301],
   ios13: [1303, 1306, 1308],
   ios13ToUpdate: [],
@@ -218,24 +220,56 @@ exports.appendLatestVersionInformation = (downloadObject, ver) => {
 
   // If it is iOS 12, then send latest link for iOS 12.
   // Otherwise send latest link for iOS 13 & Later.
-  if (upForUpdate.includes(ver)) {
-    // append new version
-    if (ver === 1307) {
-      // append iOS 12
-      downloadObject["ver"] = 1308;
-      // TODO: Update this link
-      downloadObject["latestLink"] =
-        "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
-    } else if (ver === 1303) {
-      // append iOS 13 & above
-      downloadObject["ver"] = 1306;
-      downloadObject["latestLink"] =
-        "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
+  if (versions.ios12.includes(ver)) {
+    // for iOS 12
+    switch (ver) {
+      case 1307:
+        downloadObject["ver"] = 1308;
+        // TODO: Update this link
+        downloadObject["latestLink"] =
+          "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
+        break;
+      default:
+        downloadObject["ver"] = 1308;
+        // TODO: Update this link
+        downloadObject["latestLink"] =
+          "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
+        break;
     }
   } else {
-    downloadObject["ver"] = ver;
-    downloadObject["latestLink"] =
-      "https://www.icloud.com/shortcuts/41ed3432ea1e4bc48e881ad608bb355f";
+    // for iOS 13 and beyond
+    switch (ver) {
+      case 1303:
+        downloadObject["ver"] = 1306;
+        downloadObject["latestLink"] =
+          "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
+        break;
+      default:
+        downloadObject["ver"] = 1306;
+        downloadObject["latestLink"] =
+          "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
+        break;
+    }
   }
+
+  // if (upForUpdate.includes(ver)) {
+  //   // append new version
+  //   if (ver === 1307) {
+  //     // append iOS 12
+  //     downloadObject["ver"] = 1308;
+  //     // TODO: Update this link
+  //     downloadObject["latestLink"] =
+  //       "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
+  //   } else if (ver === 1303) {
+  //     // append iOS 13 & above
+  //     downloadObject["ver"] = 1306;
+  //     downloadObject["latestLink"] =
+  //       "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
+  //   }
+  // } else {
+  //   downloadObject["ver"] = ver;
+  //   downloadObject["latestLink"] =
+  //     "https://www.icloud.com/shortcuts/41ed3432ea1e4bc48e881ad608bb355f";
+  // }
   return downloadObject;
 };
