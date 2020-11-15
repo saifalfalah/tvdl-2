@@ -86,6 +86,7 @@ exports.handler = async function http(req) {
 
     downloadObject = sanitize(downloadObject);
 
+    // TODO: Remove comment
     // if (shouldAskForSupport() === true)
     downloadObject = appendAskForSupport(downloadObject);
 

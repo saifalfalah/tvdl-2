@@ -170,6 +170,7 @@ exports.sanitize = (o) => {
   }
   return o;
 };
+
 const shouldAskForSupport = () => {
   // If the number is divisible by 7, then try selling.
   // Using 7 since 7 is prime and the unbiased probability of
@@ -178,7 +179,7 @@ const shouldAskForSupport = () => {
 
   // To double the probability, use 5 (5 & 10). Or to triple, use 3 (3, 6, 9).
   // For upsell in 1 out 10 requests, using 7 (default) since 7 is a prime number
-
+  // TODO: Remove comment
   // if (Math.ceil(Math.random() * 10) % 7 === 0) return true;
   // else return false;
 
