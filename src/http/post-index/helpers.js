@@ -224,7 +224,7 @@ exports.appendLatestVersionInformation = (downloadObject, ver) => {
     // for iOS 12
     switch (ver) {
       case 1307:
-        downloadObject["ver"] = 1308;
+        downloadObject["ver"] = 1307;
         // TODO: Update this link
         downloadObject["latestLink"] =
           "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
