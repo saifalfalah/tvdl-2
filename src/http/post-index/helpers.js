@@ -23,7 +23,7 @@ let upForUpdate = [1307];
 exports.checkClientVersion = (body) => {
   if (!body.ver) throw new Error(606);
   let supportedVersions = [...versions.ios12, ...versions.ios13];
-  if (supportedVersions.includes(parseInt(body.ver))) throw new Error(607);
+  if (!supportedVersions.includes(parseInt(body.ver))) throw new Error(607);
   // if (parseInt(body.ver) < parseInt(process.env.MIN_VER)) throw new Error(607);
 };
 
