@@ -26,6 +26,7 @@ let upForUpdate = [1307];
 exports.checkClientVersion = (body) => {
   if (!body.ver) throw new Error(606);
   let supportedVersions = [...versions.ios12, ...versions.ios13];
+  // throwing error 607 even if the shortcut versions is anything that's not in ios12 and ios13 arrays
   if (!supportedVersions.includes(parseInt(body.ver))) throw new Error(607);
 };
 
@@ -215,13 +216,13 @@ exports.appendLatestVersionInformation = (downloadObject, ver) => {
     // for iOS 12
     switch (ver) {
       case 1307:
-        downloadObject["ver"] = 1307;
+        downloadObject["ver"] = 1309;
         // TODO: Update this link
         downloadObject["latestLink"] =
           "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
         break;
       default:
-        downloadObject["ver"] = 1307;
+        downloadObject["ver"] = 1309;
         // TODO: Update this link
         downloadObject["latestLink"] =
           "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
