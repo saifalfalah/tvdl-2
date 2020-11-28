@@ -217,15 +217,15 @@ exports.appendLatestVersionInformation = (downloadObject, ver) => {
     switch (ver) {
       case 1307:
         downloadObject["ver"] = 1309;
-        // TODO: Update this link
+        // Confirmed link for 1309
         downloadObject["latestLink"] =
-          "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
+          "https://www.icloud.com/shortcuts/5cf17fe1658641c8b920f601474e5e10";
         break;
       default:
         downloadObject["ver"] = 1309;
-        // TODO: Update this link
+        // Confirmed link for 1309
         downloadObject["latestLink"] =
-          "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
+          "https://www.icloud.com/shortcuts/5cf17fe1658641c8b920f601474e5e10";
         break;
     }
   } else {
