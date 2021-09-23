@@ -18,6 +18,7 @@ let versions = {
   ios13: [1303, 1306, 1308],
   ios13ToUpdate: [],
   ios13UnSupported: [],
+  ios15: [1315],
 };
 
 // let supportedVersions = [1303, 1306, 1307, 1308];
@@ -25,7 +26,11 @@ let upForUpdate = [1307];
 
 exports.checkClientVersion = (body) => {
   if (!body.ver) throw new Error(606);
-  let supportedVersions = [...versions.ios12, ...versions.ios13];
+  let supportedVersions = [
+    ...versions.ios12,
+    ...versions.ios13,
+    ...versions.ios15,
+  ];
   // throwing error 607 even if the shortcut versions is anything that's not in ios12 and ios13 arrays
   if (!supportedVersions.includes(parseInt(body.ver))) throw new Error(607);
 };
