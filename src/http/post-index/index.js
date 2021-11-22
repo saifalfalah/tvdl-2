@@ -25,7 +25,7 @@ exports.handler = async function http(req) {
   let didUpsell = false;
   try {
     let error = {
-      errorCode: 401,
+      errorCode: 4071,
     };
     const options = {
       useUnifiedTopology: true,
