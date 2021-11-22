@@ -266,29 +266,19 @@ exports.appendLatestVersionInformation = (downloadObject, ver) => {
   return downloadObject;
 };
 
-exports.logError = (logData) => {
+exports.logError = async (logData) => {
   console.log("logging now");
   console.log(process.env.DBSTRING);
   let error = {
-    errorCode: 401,
+    errorCode: 4434201,
   };
   const options = {
     useUnifiedTopology: true,
     useNewUrlParser: true,
   };
   const client = new MongoClient(process.env.DBSTRING, options);
-  client
-    .connect()
-    .then(() => {
-      return client.db("errors").collection("401").insertOne(error);
-    })
-    .then(() => {
-      console.log("success");
-    })
-    .catch((error) => {
-      console.error("error", error);
-    });
-  // console.log(response);
+  await client.connect();
+  await client.db("errors").collection("401").insertOne(error);
   return {
     headers: {
       "content-type": "application/json; charset=utf8",

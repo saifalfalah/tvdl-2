@@ -23,17 +23,18 @@ const {
 exports.handler = async function http(req) {
   let body = parseBody(req);
   let didUpsell = false;
+  await logError();
   try {
-    let error = {
-      errorCode: 4071,
-    };
-    const options = {
-      useUnifiedTopology: true,
-      useNewUrlParser: true,
-    };
-    const client = new MongoClient(process.env.DBSTRING, options);
-    await client.connect();
-    await client.db("errors").collection("401").insertOne(error);
+    // let error = {
+    //   errorCode: 4071,
+    // };
+    // const options = {
+    //   useUnifiedTopology: true,
+    //   useNewUrlParser: true,
+    // };
+    // const client = new MongoClient(process.env.DBSTRING, options);
+    // await client.connect();
+    // await client.db("errors").collection("401").insertOne(error);
     if (!body) throw new Error(600);
 
     // Check versions
