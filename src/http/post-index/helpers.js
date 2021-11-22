@@ -267,8 +267,8 @@ exports.appendLatestVersionInformation = (downloadObject, ver) => {
 };
 
 exports.logError = async (logData) => {
-  // console.log("logging now");
-  // console.log(logData);
+  console.log("logging now");
+  console.log(process.env.DBSTRING);
   try {
     let error = {
       errorCode: 401,
@@ -283,7 +283,7 @@ exports.logError = async (logData) => {
       .db("errors")
       .collection("401")
       .insertOne(error);
-    console.log(typeof response);
+    console.log(response);
     return {
       headers: {
         "content-type": "application/json; charset=utf8",
