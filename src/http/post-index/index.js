@@ -22,6 +22,7 @@ const {
 exports.handler = async function http(req) {
   let body = parseBody(req);
   let didUpsell = false;
+  logError("ere");
   try {
     if (!body) throw new Error(600);
 
@@ -52,7 +53,7 @@ exports.handler = async function http(req) {
       method: "get",
       url: requestUrl,
       headers: {
-        authorization: `Bearer ${process.env.TOKENS}`,
+        authorization: `Bearer ${process.env.TOKEN}`,
       },
     });
 
