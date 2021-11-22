@@ -16,12 +16,12 @@ const {
   appendAskForSupport,
   appendLatestVersionInformation,
   checkClientVersion,
+  logError,
 } = require("./helpers");
 
 exports.handler = async function http(req) {
   let body = parseBody(req);
   let didUpsell = false;
-
   try {
     if (!body) throw new Error(600);
 
@@ -102,11 +102,16 @@ exports.handler = async function http(req) {
           errorMessages[e.message] +
           " Try Again. If problem persists, please go to www.tvdl.app to update / reset your shortcut.",
       };
-    } else
+    } else {
+      logError({
+        body,
+        // e,
+      });
       error = {
         error:
           "An unexpected error occurred. Try again. If problem persists, please send an email to help@tvdl.app for more help",
       };
+    }
 
     return {
       headers: {
