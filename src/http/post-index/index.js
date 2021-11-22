@@ -3,6 +3,7 @@ let data = require("@begin/data");
 let parseBody = arc.http.helpers.bodyParser;
 let axios = require("axios");
 const { toDate, lightFormat } = require("date-fns");
+const { MongoClient } = require("mongodb");
 const {
   checkBodyUrl,
   checkIsUrl,
@@ -22,7 +23,16 @@ const {
 exports.handler = async function http(req) {
   let body = parseBody(req);
   let didUpsell = false;
-  logError("ere");
+  let error = {
+    errorCode: 401,
+  };
+  const options = {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  };
+  const client = new MongoClient(process.env.DBSTRING, options);
+  await client.connect();
+  await client.db("errors").collection("401").insertOne(error);
   try {
     if (!body) throw new Error(600);
 
