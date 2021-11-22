@@ -266,32 +266,37 @@ exports.appendLatestVersionInformation = (downloadObject, ver) => {
   return downloadObject;
 };
 
-exports.logError = async (logData) => {
+exports.logError = (logData) => {
   console.log("logging now");
   console.log(process.env.DBSTRING);
-  try {
-    let error = {
-      errorCode: 401,
-    };
-    const options = {
-      useUnifiedTopology: true,
-      useNewUrlParser: true,
-    };
-    const client = new MongoClient(process.env.DBSTRING, options);
-    await client.connect();
-    await client.db("errors").collection("401").insertOne(error);
-    // console.log(response);
-    return {
-      headers: {
-        "content-type": "application/json; charset=utf8",
-      },
-      body: JSON.stringify({
-        error:
-          "An unexpected error occurred. Try again. If problem persists, please send an email to help@tvdl.app for more help",
-      }),
-      statusCode: 400,
-    };
-  } catch (error) {
-    console.error(error);
-  }
+  let error = {
+    errorCode: 401,
+  };
+  const options = {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  };
+  const client = new MongoClient(process.env.DBSTRING, options);
+  client
+    .connect()
+    .then(() => {
+      return client.db("errors").collection("401").insertOne(error);
+    })
+    .then(() => {
+      console.log("success");
+    })
+    .catch((error) => {
+      console.error("error", error);
+    });
+  // console.log(response);
+  return {
+    headers: {
+      "content-type": "application/json; charset=utf8",
+    },
+    body: JSON.stringify({
+      error:
+        "An unexpected error occurred. Try again. If problem persists, please send an email to help@tvdl.app for more help",
+    }),
+    statusCode: 400,
+  };
 };
