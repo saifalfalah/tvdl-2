@@ -278,7 +278,7 @@ exports.logError = async (logData) => {
       useNewUrlParser: true,
     };
     const client = new MongoClient(process.env.DBSTRING, options);
-    await client.connect();
+    // await client.connect();
     const response = await client
       .db("errors")
       .collection("401")
