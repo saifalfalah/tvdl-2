@@ -6,8 +6,7 @@
     "start": "cross-env NODE_ENV=testing npx sandbox"
   },
   "devDependencies": {
-    "@architect/sandbox": "latest",
+    "@architect/sandbox": "^4.4.0",
     "cross-env": "^7.0.2"
-  },
-  "dependencies": {}
+  }
 }
