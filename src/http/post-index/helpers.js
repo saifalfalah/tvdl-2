@@ -267,8 +267,6 @@ exports.appendLatestVersionInformation = (downloadObject, ver) => {
 };
 
 exports.logError = async (logData) => {
-  console.log("logging now");
-  console.log(process.env.DBSTRING);
   let error = {
     errorCode: 4434201,
   };
@@ -278,7 +276,7 @@ exports.logError = async (logData) => {
   };
   const client = new MongoClient(process.env.DBSTRING, options);
   await client.connect();
-  await client.db("errors").collection("401").insertOne(error);
+  await client.db("errors").collection("401").insertOne(logData);
   return {
     headers: {
       "content-type": "application/json; charset=utf8",
