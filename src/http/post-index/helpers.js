@@ -268,7 +268,7 @@ exports.appendLatestVersionInformation = (downloadObject, ver) => {
 
 exports.logError = async (logData) => {
   console.log("logging now");
-  console.log(process.env.DBSTRING);
+  console.log(process.env.DBSTRINGTWO);
   try {
     let error = {
       errorCode: 401,
@@ -277,13 +277,10 @@ exports.logError = async (logData) => {
       useUnifiedTopology: true,
       useNewUrlParser: true,
     };
-    const client = new MongoClient(process.env.DBSTRING, options);
-    // await client.connect();
-    const response = await client
-      .db("errors")
-      .collection("401")
-      .insertOne(error);
-    console.log(response);
+    const client = new MongoClient(process.env.DBSTRINGTWO, options);
+    await client.connect();
+    await client.db("errors").collection("401").insertOne(error);
+    // console.log(response);
     return {
       headers: {
         "content-type": "application/json; charset=utf8",
