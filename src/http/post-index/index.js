@@ -104,7 +104,7 @@ exports.handler = async function http(req) {
           " Try Again. If problem persists, please go to www.tvdl.app to update / reset your shortcut.",
       };
     } else {
-      console.log(e);
+      console.log(e.message);
       await logError({
         body,
       });
