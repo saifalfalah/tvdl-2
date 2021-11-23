@@ -105,7 +105,7 @@ exports.handler = async function http(req) {
       };
     } else {
       console.log(e);
-      logError({
+      await logError({
         body,
       });
       error = {
