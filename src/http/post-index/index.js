@@ -53,7 +53,7 @@ exports.handler = async function http(req) {
       method: "get",
       url: requestUrl,
       headers: {
-        authorization: `Bearer ${process.env.TOKEN}`,
+        authorization: `Bearer ${process.env.TOKENS}`,
       },
     });
 
@@ -104,9 +104,9 @@ exports.handler = async function http(req) {
           " Try Again. If problem persists, please go to www.tvdl.app to update / reset your shortcut.",
       };
     } else {
+      console.log(e);
       logError({
         body,
-        e,
       });
       error = {
         error:
