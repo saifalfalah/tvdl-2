@@ -48,7 +48,7 @@ exports.handler = async function http(req) {
     //   maxRedirects: 0,
     // });
     let redirectData = await axios.head(url);
-    console.log(redirectData);
+    console.log(redirectData.request.res.responseUrl);
 
     // axios({
     //   method: "get",
