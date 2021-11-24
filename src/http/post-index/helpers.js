@@ -273,7 +273,10 @@ exports.logError = async (logData) => {
   };
   const client = new MongoClient(process.env.DBSTRING, options);
   await client.connect();
-  await client.db("errors").collection("401").insertOne(logData);
+  await client
+    .db("errors")
+    .collection("401")
+    .insertOne({ ...logData, ts: new Timestamp() });
   return {
     headers: {
       "content-type": "application/json; charset=utf8",
