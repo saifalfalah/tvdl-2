@@ -60,6 +60,11 @@ exports.handler = async function http(req) {
 
     data = data.data;
 
+    // If it is a quoted tweet, we find the data for the tweet quoted
+    if (data.quoted_status_id) {
+      data = data.quoted_status;
+    }
+
     checkIfContainsVideoOrGif(data);
 
     // Getting bitrate to calculate the size of the video
