@@ -110,7 +110,11 @@ exports.handler = async function http(req) {
     }
 
     // Logging errors with 603 and some unhandled errors
-    if (e.message === "603" || !errorMessages[e.message]) {
+    if (
+      e.message === "603" ||
+      e.message === "605" ||
+      !errorMessages[e.message]
+    ) {
       console.log("logging error");
       await logError({
         body,

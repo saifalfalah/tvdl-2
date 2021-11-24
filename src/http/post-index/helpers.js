@@ -20,6 +20,7 @@ let versions = {
   ios13ToUpdate: [],
   ios13UnSupported: [],
   ios15: [1315],
+  ios15ToUpdate: [],
 };
 
 // let supportedVersions = [1303, 1306, 1307, 1308];
