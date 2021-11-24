@@ -48,7 +48,11 @@ exports.handler = async function http(req) {
     //   maxRedirects: 0,
     // });
     let redirectData = await axios.head(url);
+
     console.log(redirectData.request.res.responseUrl);
+    if (redirectData.request.res.responseUrl) {
+      url = redirectData.request.res.responseUrl;
+    }
 
     // axios({
     //   method: "get",
@@ -63,14 +67,6 @@ exports.handler = async function http(req) {
 
     // console.log("redirectData", redirectData);
     // }
-
-    return {
-      headers: {
-        "content-type": "application/json; charset=utf8",
-      },
-      body: JSON.stringify(redirectData),
-      statusCode: 200,
-    };
 
     // 3. Check if twitter URL
     checkIfTwitterUrl(url);
