@@ -116,9 +116,13 @@ exports.handler = async function http(req) {
       !errorMessages[e.message]
     ) {
       console.log("logging error");
+      let message;
+      if (e.message === "603") message = `${e.message}: Not a Twitter URL.`;
+      else if (e.message === "605")
+        message = `${e.message}: Video / GIF not found.`;
       await logError({
         body,
-        message: e.message,
+        message,
       });
     }
 
