@@ -82,7 +82,7 @@ exports.handler = async function http(req) {
       statusCode: 200,
     };
   } catch (e) {
-    console.error(e.message);
+    console.error("error message", e.message);
     let errorMessages = {
       600: "Empty request.",
       601: "No URL found.",
@@ -103,14 +103,19 @@ exports.handler = async function http(req) {
           " Try Again. If problem persists, please go to www.tvdl.app to update / reset your shortcut.",
       };
     } else {
-      await logError({
-        body,
-        message: e.message,
-      });
       error = {
         error:
           "An unexpected error occurred. Try again. If problem persists, please send an email to help@tvdl.app for more help",
       };
+    }
+
+    // Logging errors with 603 and some unhandled errors
+    if (e.message === "603" || !errorMessages[e.message]) {
+      console.log("logging error");
+      await logError({
+        body,
+        message: e.message,
+      });
     }
 
     return {
