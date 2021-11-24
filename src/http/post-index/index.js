@@ -36,7 +36,7 @@ exports.handler = async function http(req) {
     checkBodyUrl(body);
 
     // 2. Check if the field url in the body is a url
-    const url = body.url;
+    let url = body.url;
     checkIsUrl(url);
 
     let isUrlTco = checkIfTcoUrl(url);
