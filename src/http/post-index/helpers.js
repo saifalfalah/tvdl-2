@@ -267,9 +267,6 @@ exports.appendLatestVersionInformation = (downloadObject, ver) => {
 };
 
 exports.logError = async (logData) => {
-  let error = {
-    errorCode: 4434201,
-  };
   const options = {
     useUnifiedTopology: true,
     useNewUrlParser: true,
