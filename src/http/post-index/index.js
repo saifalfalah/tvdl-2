@@ -33,7 +33,6 @@ exports.handler = async function http(req) {
 
     // 2. Check if the field url in the body is a url
     const url = body.url;
-    // console.log(url);
     checkIsUrl(url);
 
     // 3. Check if twitter URL
@@ -64,8 +63,6 @@ exports.handler = async function http(req) {
 
     let downloadObject = makeDownloadObject(data, bitrates);
 
-    // console.log(downloadObject);
-
     downloadObject = sanitize(downloadObject);
 
     downloadObject = appendAskForSupport(downloadObject);
@@ -82,7 +79,7 @@ exports.handler = async function http(req) {
       statusCode: 200,
     };
   } catch (e) {
-    console.error("error message", e.message);
+    // console.error("error message", e.message);
     let errorMessages = {
       600: "Empty request.",
       601: "No URL found.",
@@ -109,13 +106,13 @@ exports.handler = async function http(req) {
       };
     }
 
-    // Logging errors with 603 and some unhandled errors
+    // Logging errors with 603, 605 and some unexpected errors
     if (
       e.message === "603" ||
       e.message === "605" ||
       !errorMessages[e.message]
     ) {
-      console.log("logging error");
+      // console.log("logging error");
       let message;
       if (e.message === "603") message = `${e.message}: Not a Twitter URL.`;
       else if (e.message === "605")
