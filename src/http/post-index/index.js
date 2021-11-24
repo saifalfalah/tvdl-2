@@ -20,9 +20,12 @@ const {
 } = require("./helpers");
 
 exports.handler = async function http(req) {
+  // Parsing the body to get the contents of the POST request
   let body = parseBody(req);
+  // didUpsell tracks whether we asked for support or not
   let didUpsell = false;
   try {
+    // if the request is empty, we just throw an error
     if (!body) throw new Error(600);
 
     // Check versions
@@ -59,12 +62,16 @@ exports.handler = async function http(req) {
 
     checkIfContainsVideoOrGif(data);
 
+    // Getting bitrate to calculate the size of the video
     let bitrates = getBitrate(data);
 
+    // creating the download object to send back
     let downloadObject = makeDownloadObject(data, bitrates);
 
+    // adding some more structure to the download object
     downloadObject = sanitize(downloadObject);
 
+    // appending asking for support
     downloadObject = appendAskForSupport(downloadObject);
 
     if (downloadObject["sell"] === true) didUpsell = true;
@@ -93,6 +100,7 @@ exports.handler = async function http(req) {
 
     let error;
 
+    // creating the error message that'll be sent back
     if (errorMessages[e.message]) {
       error = {
         error:
@@ -124,6 +132,7 @@ exports.handler = async function http(req) {
       });
     }
 
+    // returning the error
     return {
       headers: {
         "content-type": "application/json; charset=utf8",
@@ -132,7 +141,7 @@ exports.handler = async function http(req) {
       statusCode: 400,
     };
   } finally {
-    // Save data in begin here
+    // Save data in db here
     // table = requests
     // key = date
     // prop = total number of requests today
