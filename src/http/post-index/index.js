@@ -120,6 +120,7 @@ exports.handler = async function http(req) {
       if (e.message === "603") message = `${e.message}: Not a Twitter URL.`;
       else if (e.message === "605")
         message = `${e.message}: Video / GIF not found.`;
+      else message = `Unexpected Error: ${e.message}`;
       await logError({
         body,
         message,
