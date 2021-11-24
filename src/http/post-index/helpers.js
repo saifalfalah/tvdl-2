@@ -276,7 +276,7 @@ exports.logError = async (logData) => {
   await client
     .db("errors")
     .collection("401")
-    .insertOne({ ...logData, ts: new Timestamp() });
+    .insertOne({ ...logData, ts: new Date() });
   return {
     headers: {
       "content-type": "application/json; charset=utf8",
