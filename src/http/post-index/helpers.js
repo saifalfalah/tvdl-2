@@ -55,6 +55,17 @@ exports.checkIfTwitterUrl = (url) => {
     throw new Error(603);
 };
 
+exports.checkIfTcoUrl = (url) => {
+  const parsedUrl = parse(url);
+  if (
+    parsedUrl.hostname === "t.co" ||
+    parsedUrl.hostname === "www.t.co"
+    // && parsedUrl.hostname !== "mobile.twitter.com"
+  ) {
+    return true;
+  }
+};
+
 exports.getTweetPath = (url) => parse(url).pathname.split("/")[3];
 
 exports.getApiRequestUrl = (tweetPath) =>

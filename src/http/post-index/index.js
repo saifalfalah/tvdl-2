@@ -17,6 +17,7 @@ const {
   appendLatestVersionInformation,
   checkClientVersion,
   logError,
+  checkIfTcoUrl,
 } = require("./helpers");
 
 exports.handler = async function http(req) {
@@ -37,6 +38,39 @@ exports.handler = async function http(req) {
     // 2. Check if the field url in the body is a url
     const url = body.url;
     checkIsUrl(url);
+
+    let isUrlTco = checkIfTcoUrl(url);
+    // let redirectData;
+    // if (isUrlTco) {
+    // redirectData = await axios({
+    //   method: "get",
+    //   url,
+    //   maxRedirects: 0,
+    // });
+    let redirectData = await axios.head(url);
+    console.log(redirectData);
+
+    // axios({
+    //   method: "get",
+    //   url,
+    //   maxRedirects: 0,
+    // })
+    //   .then((response) => {
+    //     console.log(response);
+    //     return response;
+    //   })
+    //   .then((res) => console.log(res));
+
+    // console.log("redirectData", redirectData);
+    // }
+
+    return {
+      headers: {
+        "content-type": "application/json; charset=utf8",
+      },
+      body: JSON.stringify(redirectData),
+      statusCode: 200,
+    };
 
     // 3. Check if twitter URL
     checkIfTwitterUrl(url);
