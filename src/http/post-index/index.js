@@ -40,33 +40,31 @@ exports.handler = async function http(req) {
     checkIsUrl(url);
 
     let isUrlTco = checkIfTcoUrl(url);
-    // let redirectData;
-    // if (isUrlTco) {
-    // redirectData = await axios({
-    //   method: "get",
-    //   url,
-    //   maxRedirects: 0,
-    // });
-    let redirectData = await axios.head(url);
 
-    console.log(redirectData.request.res.responseUrl);
-    if (redirectData.request.res.responseUrl) {
-      url = redirectData.request.res.responseUrl;
+    let redirectData;
+
+    // if it is a t.co link we try and resolve it
+    if (isUrlTco) {
+      redirectData = await axios.head(url);
     }
 
-    // axios({
-    //   method: "get",
-    //   url,
-    //   maxRedirects: 0,
-    // })
-    //   .then((response) => {
-    //     console.log(response);
-    //     return response;
-    //   })
-    //   .then((res) => console.log(res));
-
-    // console.log("redirectData", redirectData);
-    // }
+    // we set the url variable to the newly resolved t.co url
+    if (
+      redirectData &&
+      redirectData.request &&
+      redirectData.request.res &&
+      redirectData.request.res.responseUrl
+    ) {
+      url = redirectData.request.res.responseUrl;
+      // console.log(redirectData.request.res.responseUrl);
+    } else if (
+      isUrlTco &&
+      (!redirectData.request ||
+        !redirectData.request.res ||
+        !redirectData.request.res.responseUrl)
+    ) {
+      throw new Error(608);
+    }
 
     // 3. Check if twitter URL
     checkIfTwitterUrl(url);
@@ -131,6 +129,7 @@ exports.handler = async function http(req) {
       605: "Video / GIF not found.",
       606: "Shortcut compromised.",
       607: "Outdated shortcut version.",
+      608: "Cannot resolve URL redirect",
     };
 
     let error;
