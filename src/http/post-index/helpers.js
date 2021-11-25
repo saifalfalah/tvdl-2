@@ -63,7 +63,7 @@ exports.checkIfTcoUrl = (url) => {
     // && parsedUrl.hostname !== "mobile.twitter.com"
   ) {
     return true;
-  }
+  } else return false;
 };
 
 exports.getTweetPath = (url) => parse(url).pathname.split("/")[3];
