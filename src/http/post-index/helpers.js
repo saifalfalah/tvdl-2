@@ -287,7 +287,7 @@ exports.logError = async (logData) => {
   await client.connect();
   await client
     .db("errors")
-    .collection("401")
+    .collection("test")
     .insertOne({ ...logData, ts: new Date() });
   await client.close();
   return {
