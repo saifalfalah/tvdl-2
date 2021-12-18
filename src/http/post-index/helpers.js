@@ -76,7 +76,8 @@ exports.checkIfContainsVideoOrGif = (data) => {
     !data.hasOwnProperty("extended_entities") ||
     !data.extended_entities.media[0].video_info
   )
-    throw new Error(605);
+    return false;
+  else return true;
 };
 
 exports.getBitrate = (data) => {

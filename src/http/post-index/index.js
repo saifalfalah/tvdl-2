@@ -88,12 +88,15 @@ exports.handler = async function http(req) {
 
     data = data.data;
 
-    // If it is a quoted tweet, we find the data for the tweet quoted
-    if (data.quoted_status_id) {
-      data = data.quoted_status;
+    // If video is not found, we check if it is a quoted tweet
+    if (!checkIfContainsVideoOrGif(data)) {
+      if (data.quoted_status_id) {
+        // If it is a quoted tweet, we find the data for the tweet quoted
+        data = data.quoted_status;
+        // Check for the video in the quoted tweet. If we still can't find video, we throw error
+        if (!checkIfContainsVideoOrGif(data)) throw new Error(605);
+      } else throw new Error(605);
     }
-
-    checkIfContainsVideoOrGif(data);
 
     // Getting bitrate to calculate the size of the video
     let bitrates = getBitrate(data);
