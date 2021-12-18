@@ -6,6 +6,7 @@ get /
 post /
 get /ver
 post /try
+post /groot
 
 @tables
 data
