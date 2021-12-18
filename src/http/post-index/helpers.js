@@ -191,7 +191,7 @@ const shouldAskForSupport = () => {
 
   // To double the probability, use 5 (5 & 10). Or to triple, use 3 (3, 6, 9).
   // For upsell in 1 out 10 requests, using 7 (default) since 7 is a prime number
-  if (Math.ceil(Math.random() * 10) % 7 === 0) return true;
+  if (Math.ceil(Math.random() * 10) % 5 === 0) return true;
   else return false;
 
   // hard return for testing
@@ -204,11 +204,13 @@ exports.appendAskForSupport = (downloadObject) => {
     downloadObject["sellLink"] =
       "https://support-tvdl.saifalfalah.workers.dev/";
     downloadObject["sellMessage"] =
-      "Thank you for using TVDL. If you like this shortcut, please consider helping me by supporting this shortcut.";
+      "Happy Holidays! Please donate a small amount to support this shortcut! 🙏";
+    // downloadObject["sellMessage"] =
+    //   "Thank you for using TVDL. If you like this shortcut, please consider helping me by supporting this shortcut.";
     downloadObject["declineMessage"] =
-      "If you dislike this donation prompt, you can download a version of this shortcut without it, at www.tvdl.app. Thank you!";
-    downloadObject["yesPrompt"] = "Yes, I will support 😀";
-    downloadObject["noPrompt"] = "No, I will not 🙁";
+      "If you have already donated, you can download TVDL - No Donation Edition, at www.tvdl.app. Thank you!";
+    downloadObject["yesPrompt"] = "Yes, I will support 👍😁";
+    downloadObject["noPrompt"] = "No, I will not 👎";
   } else downloadObject["sell"] = false;
   // add url of the website where to redirect users for upsell
   return downloadObject;
