@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@architect/functions": "^4.1.1",
     "axios": "^0.24.0",
     "url-parse": "^1.5.3"
   }
