@@ -203,10 +203,10 @@ exports.appendAskForSupport = (downloadObject) => {
     downloadObject["sell"] = true;
     downloadObject["sellLink"] =
       "https://support-tvdl.saifalfalah.workers.dev/";
-    downloadObject["sellMessage"] =
-      "Happy Holidays! Please donate a small amount to support this shortcut! 🙏";
     // downloadObject["sellMessage"] =
-    //   "Thank you for using TVDL. If you like this shortcut, please consider helping me by supporting this shortcut.";
+    //   "Happy Holidays! Please donate a small amount to support this shortcut! 🙏";
+    downloadObject["sellMessage"] =
+      "Thank you for using TVDL. If you like this shortcut, please consider helping me by supporting this shortcut. 🙏";
     downloadObject["declineMessage"] =
       "If you have already donated, you can download TVDL - No Donation Edition, at www.tvdl.app. Thank you!";
     downloadObject["yesPrompt"] = "Yes, I will support 👍😁";
