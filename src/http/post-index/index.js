@@ -82,7 +82,7 @@ exports.handler = async function http(req) {
       method: "get",
       url: requestUrl,
       headers: {
-        authorization: `Bearer ${process.env.TOKEN}`,
+        authorization: `Bearer ${process.env.TOKEN2}`,
       },
     });
 
