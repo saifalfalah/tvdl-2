@@ -3,6 +3,7 @@ let data = require("@begin/data");
 let parseBody = arc.http.helpers.bodyParser;
 let axios = require("axios");
 const { toDate, lightFormat } = require("date-fns");
+const loadbalance = require("loadbalance");
 const {
   checkBodyUrl,
   checkIsUrl,
@@ -77,12 +78,23 @@ exports.handler = async function http(req) {
     // 5. Prepare api request url
     const requestUrl = getApiRequestUrl(tweetPath);
 
+    const engine = loadbalance.random([
+      { object: "a", weight: 7 },
+      { object: "b", weight: 3 },
+    ]);
+    const pick = engine.pick();
+
+    const authHeader =
+      pick === "a"
+        ? `Bearer ${process.env.TOKEN}`
+        : `Bearer ${process.env.TOKEN2}`;
+
     let data;
     data = await axios({
       method: "get",
       url: requestUrl,
       headers: {
-        authorization: `Bearer ${process.env.TOKEN}`,
+        authorization: authHeader,
       },
     });
 
