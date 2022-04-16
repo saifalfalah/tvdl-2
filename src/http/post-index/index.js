@@ -57,7 +57,7 @@ exports.handler = async function http(req) {
       redirectData.request.res.responseUrl
     ) {
       url = redirectData.request.res.responseUrl;
-      // console.log(redirectData.request.res.responseUrl);
+      console.log(redirectData.request.res.responseUrl);
     } else if (
       isUrlTco &&
       (!redirectData.request ||
