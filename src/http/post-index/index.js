@@ -3,7 +3,6 @@ let data = require("@begin/data");
 let parseBody = arc.http.helpers.bodyParser;
 let axios = require("axios");
 const { toDate, lightFormat } = require("date-fns");
-const loadbalance = require("loadbalance");
 const {
   checkBodyUrl,
   checkIsUrl,
