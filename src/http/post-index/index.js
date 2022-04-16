@@ -69,6 +69,7 @@ exports.handler = async function http(req) {
 
     // 3. Check if twitter URL
     checkIfTwitterUrl(url);
+    console.log("url xxxx", url);
 
     // 4. Check if the URL contains a video
     // Getting the Tweet Path
