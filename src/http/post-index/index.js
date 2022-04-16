@@ -83,7 +83,11 @@ exports.handler = async function http(req) {
     try {
       data = await getTwitterData(requestUrl, `Bearer ${process.env.TOKEN}`);
     } catch (error) {
-      if (error?.response?.status === 429) {
+      if (
+        error.response &&
+        error.response.status &&
+        error.response.status === 429
+      ) {
         try {
           data = await getTwitterData(
             requestUrl,
