@@ -19,6 +19,7 @@ const {
   checkClientVersion,
   logError,
   checkIfTcoUrl,
+  getTwitterData,
 } = require("./helpers");
 
 exports.handler = async function http(req) {
@@ -78,25 +79,21 @@ exports.handler = async function http(req) {
     // 5. Prepare api request url
     const requestUrl = getApiRequestUrl(tweetPath);
 
-    const engine = loadbalance.random([
-      { object: "a", weight: 7 },
-      { object: "b", weight: 3 },
-    ]);
-    const pick = engine.pick();
-
-    const authHeader =
-      pick === "a"
-        ? `Bearer ${process.env.TOKEN}`
-        : `Bearer ${process.env.TOKEN2}`;
-
     let data;
-    data = await axios({
-      method: "get",
-      url: requestUrl,
-      headers: {
-        authorization: authHeader,
-      },
-    });
+    try {
+      data = await getTwitterData(requestUrl, `Bearer ${process.env.TOKEN}`);
+    } catch (error) {
+      if (error?.response?.status === 429) {
+        try {
+          data = await getTwitterData(
+            requestUrl,
+            `Bearer ${process.env.TOKEN2}`
+          );
+        } catch (error) {
+          throw new Error(error.message);
+        }
+      } else throw new Error(error.message);
+    }
 
     data = data.data;
 

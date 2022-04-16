@@ -1,6 +1,7 @@
 const parse = require("url-parse");
 let isURL = require("is-url");
 const { MongoClient } = require("mongodb");
+const axios = require("axios");
 /*
 Versions:
 1303: v3
@@ -303,4 +304,15 @@ exports.logError = async (logData) => {
     }),
     statusCode: 400,
   };
+};
+
+exports.getTwitterData = async (url, authHeader) => {
+  data = await axios({
+    method: "get",
+    url,
+    headers: {
+      authorization: authHeader,
+    },
+  });
+  return data;
 };
