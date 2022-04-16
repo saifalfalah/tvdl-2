@@ -104,7 +104,8 @@ exports.handler = async function http(req) {
     if (!checkIfContainsVideoOrGif(data)) {
       if (data.quoted_status_id) {
         // If it is a quoted tweet, we find the data for the tweet quoted
-        data = data.quoted_status;
+        if (!data.quoted_status) throw new Error(610);
+        else data = data.quoted_status;
         // Check for the video in the quoted tweet. If we still can't find video, we throw error
         if (!checkIfContainsVideoOrGif(data)) throw new Error(605);
       } else throw new Error(605);
@@ -146,6 +147,7 @@ exports.handler = async function http(req) {
       606: "Shortcut compromised.",
       607: "Outdated shortcut version.",
       608: "Cannot resolve URL redirect",
+      610: "Quoted tweet not found.",
     };
 
     let error;
