@@ -94,7 +94,8 @@ exports.makeDownloadObject = (data, bitrates) => {
   let downloadObject = {};
   // for a lack of better way, I create three objects that will be
   // appended to the downloadObject and sent back
-  let high = {},
+  let highest = {},
+    high = {},
     medium = {},
     low = {};
   // trimming down the data we are working with
@@ -113,7 +114,17 @@ exports.makeDownloadObject = (data, bitrates) => {
   // We pop the array after every calculation so that we can focus on
   // other sizes on the next iteration of the loop.
   while (bitrates.length > 0) {
-    if (bitrates.length === 3) {
+    if (bitrates.length === 4) {
+      let videoUrl;
+      variants.forEach((variant) => {
+        if (variant.bitrate === bitrates[3]) videoUrl = variant.url;
+      });
+      highest.downloadURL = videoUrl;
+      let size = calculateSizeBitrate(bitrates[3], duration);
+      highest.size = size;
+      downloadObject.highest = highest;
+      bitrates.pop();
+    } else if (bitrates.length === 3) {
       let videoUrl;
       variants.forEach((variant) => {
         if (variant.bitrate === bitrates[2]) videoUrl = variant.url;
