@@ -7,6 +7,7 @@ post /
 get /ver
 post /try
 post /groot
+post /v2
 
 @tables
 data
