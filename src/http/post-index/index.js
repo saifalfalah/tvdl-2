@@ -157,12 +157,12 @@ exports.handler = async function http(req) {
       error = {
         error:
           errorMessages[e.message] +
-          " Try Again. ⚡⚡⚡New version of TVDL is out. Download at: tvdl.app",
+          " Try Again. ⚡⚡⚡New version of TVDL is out. Download at our website: tvdl.app",
       };
     } else {
       error = {
         error:
-          "An unexpected error occurred. ⚡⚡⚡New version of TVDL is out. Download at: tvdl.app",
+          "An unexpected error occurred. ⚡⚡⚡New version of TVDL is out. Download at our website: tvdl.app",
       };
     }
 
