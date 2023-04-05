@@ -69,7 +69,6 @@ exports.handler = async function http(req) {
 
     // 3. Check if twitter URL
     checkIfTwitterUrl(url);
-    console.log("url xxxx", url);
 
     // 4. Check if the URL contains a video
     // Getting the Tweet Path
@@ -167,23 +166,23 @@ exports.handler = async function http(req) {
       };
     }
 
-    // Logging errors with 603, 605 and some unexpected errors
-    if (
-      e.message === "603" ||
-      e.message === "605" ||
-      !errorMessages[e.message]
-    ) {
-      // console.log("logging error");
-      let message;
-      if (e.message === "603") message = `${e.message}: Not a Twitter URL.`;
-      else if (e.message === "605")
-        message = `${e.message}: Video / GIF not found.`;
-      else message = `Unexpected Error: ${e.message}`;
-      await logError({
-        body,
-        message,
-      });
-    }
+    // // Logging errors with 603, 605 and some unexpected errors
+    // if (
+    //   e.message === "603" ||
+    //   e.message === "605" ||
+    //   !errorMessages[e.message]
+    // ) {
+    //   // console.log("logging error");
+    //   let message;
+    //   if (e.message === "603") message = `${e.message}: Not a Twitter URL.`;
+    //   else if (e.message === "605")
+    //     message = `${e.message}: Video / GIF not found.`;
+    //   else message = `Unexpected Error: ${e.message}`;
+    //   await logError({
+    //     body,
+    //     message,
+    //   });
+    // }
 
     // returning the error
     return {
