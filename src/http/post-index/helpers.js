@@ -17,11 +17,11 @@ let versions = {
   ios12: [1307, 1309],
   ios12ToUpdate: [1307],
   ios12UnSupported: [1301],
-  ios13: [1303, 1306, 1308],
-  ios13ToUpdate: [],
+  ios13: [],
+  ios13ToUpdate: [1303, 1306, 1308],
   ios13UnSupported: [],
-  ios15: [1315],
-  ios15ToUpdate: [],
+  ios15: [],
+  ios15ToUpdate: [1315],
 };
 
 // let supportedVersions = [1303, 1306, 1307, 1308];
@@ -265,28 +265,29 @@ exports.appendLatestVersionInformation = (downloadObject, ver) => {
     // for iOS 13 and beyond
     switch (ver) {
       case 1303:
-        downloadObject["ver"] = 1306;
+        downloadObject["ver"] = 1500;
         // link verified for version 1306
-        downloadObject["latestLink"] =
-          "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
+        downloadObject["latestLink"] = "https://www.tvdl.app";
         break;
       case 1306:
-        downloadObject["ver"] = 1306;
+        downloadObject["ver"] = 1500;
         // link verified for version 1306
-        downloadObject["latestLink"] =
-          "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
+        downloadObject["latestLink"] = "https://www.tvdl.app";
         break;
       case 1308:
-        downloadObject["ver"] = 1308;
+        downloadObject["ver"] = 1500;
         // link verified and is for version 1308
-        downloadObject["latestLink"] =
-          "https://www.icloud.com/shortcuts/8002d771575b42449fbfd14be11e661d";
+        downloadObject["latestLink"] = "https://www.tvdl.app";
+        break;
+      case 1315:
+        downloadObject["ver"] = 1500;
+        // link verified and is for version 1308
+        downloadObject["latestLink"] = "https://www.tvdl.app";
         break;
       default:
-        downloadObject["ver"] = 1306;
+        downloadObject["ver"] = 1500;
         // link verified for version 1306
-        downloadObject["latestLink"] =
-          "https://www.icloud.com/shortcuts/a72f16f4e3664c8daa0c0a5fc76182fe";
+        downloadObject["latestLink"] = "https://www.tvdl.app";
         break;
     }
   }
