@@ -20,8 +20,8 @@ let versions = {
   ios13: [1303, 1306, 1308],
   ios13ToUpdate: [],
   ios13UnSupported: [],
-  ios15: [],
-  ios15ToUpdate: [1315],
+  ios15: [1315],
+  ios15ToUpdate: [],
 };
 
 // let supportedVersions = [1303, 1306, 1307, 1308];

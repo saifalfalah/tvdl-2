@@ -158,12 +158,12 @@ exports.handler = async function http(req) {
       error = {
         error:
           errorMessages[e.message] +
-          " Try Again. If problem persists, please go to www.tvdl.app to update / reset your shortcut.",
+          " Try Again. ⚡⚡⚡New version of TVDL is out. Download at: tvdl.app",
       };
     } else {
       error = {
         error:
-          "An unexpected error occurred. Try again. If problem persists, please send an email to help@tvdl.app for more help",
+          "An unexpected error occurred. ⚡⚡⚡New version of TVDL is out. Download at: tvdl.app",
       };
     }
 
