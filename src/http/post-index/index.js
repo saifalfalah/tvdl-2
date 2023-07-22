@@ -22,6 +22,17 @@ const {
 } = require("./helpers");
 
 exports.handler = async function http(req) {
+  const error = {
+    error:
+      "This shortcut will no longer work because of changes by Twitter. Please download the lastest version of TVDl from www.tvdl.app.  Thank you so much for your support! 🫶 ",
+  };
+  return {
+    headers: {
+      "content-type": "application/json; charset=utf8",
+    },
+    body: JSON.stringify(error),
+    statusCode: 200,
+  };
   // Parsing the body to get the contents of the POST request
   let body = parseBody(req);
   // didUpsell tracks whether we asked for support or not
