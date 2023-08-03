@@ -1,3 +1,6 @@
+@aws
+runtime nodejs16.x
+
 @app
 tvdl-app
 
