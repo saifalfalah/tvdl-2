@@ -137,6 +137,7 @@ exports.handler = async function http(req) {
   } catch (e) {
     console.log(e);
     console.error("error message", e.message);
+    console.log("Testing logging");
     let errorMessages = {
       600: "Empty request.",
       601: "No URL found.",
