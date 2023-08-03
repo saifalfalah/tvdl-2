@@ -24,7 +24,7 @@ const {
 exports.handler = async function http(req) {
   const error = {
     error:
-      "This shortcut will no longer work because of changes by Twitter. Please download the lastest version of TVDl from www.tvdl.app.  Thank you so much for your support! 🫶 ",
+      "This shortcut will no longer work because of changes by Twitter. Please download the latest version of TVDl from www.tvdl.app.  Thank you so much for your support! 🫶 ",
   };
   return {
     headers: {
